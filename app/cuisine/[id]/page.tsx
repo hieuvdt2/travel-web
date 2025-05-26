@@ -27,7 +27,7 @@ export default async function FoodDetailPage({
   // Tìm món ăn theo ID
   // const food = foods.find((f:any) => f.id ===(params.id))
   const food = await api.cuisine.getFoodById(params.id);
-
+  
   // Nếu không tìm thấy món ăn
   if (!food) {
     return (

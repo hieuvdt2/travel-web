@@ -115,7 +115,7 @@ export interface Formats {
 
 
 
-export interface  Foods{
+export interface Foods{
   id: number
   attributes: Food
 }
@@ -138,3 +138,68 @@ export interface Food {
   publishedAt: string
   image: Image
 }
+
+export interface Banners{
+  id: number;
+  attributes: Banner;
+}
+
+export interface Banner {
+  title: string
+  description: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  image: Image
+}
+
+
+export interface TraditionalVillages{
+  id: number;
+  attributes: TraditionalVillage;
+}
+export interface TraditionalVillage {
+  name: string
+  location: string
+  description: string
+  region: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  origin:string
+  image: Image
+}
+
+///
+export interface Heritages{
+  id: number;
+  attributes: Heritage;
+}
+export interface Heritage {
+  name: string
+  location: string
+  description: string
+  region: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  origin:string
+  image: Image
+}
+export interface Festivals{
+  id: number;
+  attributes: Festival;
+}
+export interface Festival {
+  name: string
+  location: string
+  description: string
+  region: string
+  createdAt: string
+  origin:string
+  updatedAt: string
+  publishedAt: string
+  image: Image
+}
+
+

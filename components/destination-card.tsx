@@ -14,7 +14,7 @@ interface DestinationCardProps {
 
 export function DestinationCard({ destination }: DestinationCardProps) {
       const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
-   console.log('ccccc',destination)
+  //  console.log('ccccc',destination)
   return (
     <Card className="overflow-hidden h-full flex flex-col">
       <div className="relative h-48">

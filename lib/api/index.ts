@@ -18,6 +18,13 @@ import { cultureService } from "./services/culture-service"
 import { authService } from "./services/auth-service"
 import { userService } from "./services/user-service"
 import { tourService } from "./services/tour-service"
+import { bannerService } from "./services/banner-service"
+import { festivalService} from "./services/festival-service"
+import { heritageService} from "./services/heritage-service"
+import { traditionalVillageService} from "./services/traditional-village.service"
+
+
+
 
 export const api = {
   destinations: destinationService,
@@ -26,6 +33,11 @@ export const api = {
   auth: authService,
   user: userService,
   tours: tourService,
+  banners:bannerService,
+  festival:festivalService,
+  heritage:heritageService,
+  traditionalVillage:traditionalVillageService
+
 }
 
 export default api
