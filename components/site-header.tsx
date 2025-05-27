@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { useState } from "react"
-import Link from "next/link"
-import { Menu } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import { Menu } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   NavigationMenuContent,
   NavigationMenuItem,
@@ -15,25 +15,27 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import { NavigationMenu } from "./ClientOnlyNavigationMenu"
-import Image from "next/image"
-import Logo from '@/app/asset/images/logo-Vivu.png'
-
+} from "@/components/ui/navigation-menu";
+import { NavigationMenu } from "./ClientOnlyNavigationMenu";
+import Image from "next/image";
+import Logo from "@/app/asset/images/logo-Vivu.png";
+import coverImage from "@/app/asset/images/dia-danh-noi-tieng.jpg";
+import foodCover from "@/app/asset/images/am-thuc-viet-nam-all.jpg";
+import cultureCover from "@/app/asset/images/van-hoa-3-mien.png";
 export function SiteHeader() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-       <Image
-    src={Logo}
-    alt="ViVu Viet Nam Logo"
-    width={84}
-    height={84}
-    className="rounded-full object-cover hidden  sm:inline-block"
-  />
+          <Image
+            src={Logo}
+            alt="ViVu Viet Nam Logo"
+            width={84}
+            height={84}
+            className="rounded-full object-cover hidden  sm:inline-block"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -42,7 +44,9 @@ export function SiteHeader() {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>Trang chủ</NavigationMenuLink>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Trang chủ
+                  </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
 
@@ -53,26 +57,49 @@ export function SiteHeader() {
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
                         <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                          className="flex h-full w-full select-none flex-col rounded-md bg-gradient-to-b from-muted/50 to-muted p-4 no-underline outline-none focus:shadow-md"
                           href="/destinations"
                         >
-                          <div className="mb-2 mt-4 text-lg font-medium">Tất cả địa điểm</div>
+                          <div className="relative mb-4 h-32 w-full overflow-hidden rounded-md">
+                            <Image
+                              src={coverImage}
+                              alt="Tất cả địa điểm"
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="mb-2 text-lg font-medium">
+                            Tất cả địa điểm
+                          </div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            Khám phá tất cả các địa điểm du lịch nổi tiếng tại Việt Nam
+                            Khám phá tất cả các địa điểm du lịch nổi tiếng tại
+                            Việt Nam
                           </p>
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/destinations?category=spiritual" title="Du lịch tâm linh">
+                    <ListItem
+                      href="/destinations?category=spiritual"
+                      title="Du lịch tâm linh"
+                    >
                       Các địa điểm tâm linh nổi tiếng
                     </ListItem>
-                    <ListItem href="/destinations?category=beach" title="Du lịch biển">
+                    <ListItem
+                      href="/destinations?category=beach"
+                      title="Du lịch biển"
+                    >
                       Những bãi biển đẹp nhất Việt Nam
                     </ListItem>
-                    <ListItem href="/destinations?category=natural" title="Công trình tự nhiên">
+                    <ListItem
+                      href="/destinations?category=natural"
+                      title="Công trình tự nhiên"
+                    >
                       Các kỳ quan thiên nhiên tuyệt đẹp
                     </ListItem>
-                    <ListItem href="/destinations?category=nhanTao" title="Công trình nhân tạo">
+                    <ListItem
+                      href="/destinations?category=nhanTao"
+                      title="Công trình nhân tạo"
+                    >
                       Các công trình kiến trúc nổi tiếng
                     </ListItem>
                   </ul>
@@ -86,23 +113,42 @@ export function SiteHeader() {
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
                         <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                          className="flex h-full w-full select-none flex-col rounded-md bg-gradient-to-b from-muted/50 to-muted p-4 no-underline outline-none focus:shadow-md"
                           href="/cuisine"
                         >
-                          <div className="mb-2 mt-4 text-lg font-medium">Tất cả món ăn</div>
+                          <div className="relative mb-4 h-32 w-full overflow-hidden rounded-md">
+                            <Image
+                              src={foodCover}
+                              alt="Tất cả món ăn"
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="mb-2 text-lg font-medium">
+                            Tất cả món ăn
+                          </div>
                           <p className="text-sm leading-tight text-muted-foreground">
                             Khám phá nền ẩm thực phong phú của Việt Nam
                           </p>
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/cuisine?region=north" title="Ẩm thực miền Bắc">
+                    <ListItem
+                      href="/cuisine?region=north"
+                      title="Ẩm thực miền Bắc"
+                    >
                       Những món ăn đặc trưng miền Bắc
                     </ListItem>
-                    <ListItem href="/cuisine?region=central" title="Ẩm thực miền Trung">
+                    <ListItem
+                      href="/cuisine?region=central"
+                      title="Ẩm thực miền Trung"
+                    >
                       Những món ăn đặc trưng miền Trung
                     </ListItem>
-                    <ListItem href="/cuisine?region=south" title="Ẩm thực miền Nam">
+                    <ListItem
+                      href="/cuisine?region=south"
+                      title="Ẩm thực miền Nam"
+                    >
                       Những món ăn đặc trưng miền Nam
                     </ListItem>
                   </ul>
@@ -116,12 +162,23 @@ export function SiteHeader() {
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
                         <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                          className="flex h-full w-full select-none flex-col rounded-md bg-gradient-to-b from-muted/50 to-muted p-4 no-underline outline-none focus:shadow-md"
                           href="/culture"
                         >
-                          <div className="mb-2 mt-4 text-lg font-medium">Văn hóa Việt Nam</div>
+                          <div className="relative mb-4 h-32 w-full overflow-hidden rounded-md">
+                            <Image
+                              src={cultureCover}
+                              alt="Văn hóa Việt Nam"
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="mb-2 text-lg font-medium">
+                            Văn hóa Việt Nam
+                          </div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            Khám phá nét đẹp văn hóa đặc sắc của ba miền Bắc - Trung - Nam
+                            Khám phá nét đẹp văn hóa đặc sắc của ba miền Bắc -
+                            Trung - Nam
                           </p>
                         </a>
                       </NavigationMenuLink>
@@ -129,11 +186,15 @@ export function SiteHeader() {
                     <ListItem href="/culture/north" title="Văn hóa miền Bắc">
                       Nét đẹp văn hóa đặc sắc của vùng đất ngàn năm văn hiến
                     </ListItem>
-                    <ListItem href="/culture/central" title="Văn hóa miền Trung">
+                    <ListItem
+                      href="/culture/central"
+                      title="Văn hóa miền Trung"
+                    >
                       Nét đẹp văn hóa đặc sắc của vùng đất cố đô và di sản
                     </ListItem>
                     <ListItem href="/culture/south" title="Văn hóa miền Nam">
-                      Nét đẹp văn hóa đa dạng, phóng khoáng của vùng đất phương Nam
+                      Nét đẹp văn hóa đa dạng, phóng khoáng của vùng đất phương
+                      Nam
                     </ListItem>
                   </ul>
                 </NavigationMenuContent>
@@ -141,13 +202,17 @@ export function SiteHeader() {
 
               <NavigationMenuItem>
                 <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>Về chúng tôi</NavigationMenuLink>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Về chúng tôi
+                  </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
                 <Link href="/contact" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>Liên hệ</NavigationMenuLink>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Liên hệ
+                  </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
@@ -169,30 +234,62 @@ export function SiteHeader() {
             </SheetTrigger>
             <SheetContent side="right">
               <div className="flex flex-col space-y-4 pt-6">
-                <Link href="/" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
+                <Link
+                  href="/"
+                  className="text-lg font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
                   Trang chủ
                 </Link>
-                <Link href="/destinations" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
+                <Link
+                  href="/destinations"
+                  className="text-lg font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
                   Địa điểm du lịch
                 </Link>
-                <Link href="/cuisine" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
+                <Link
+                  href="/cuisine"
+                  className="text-lg font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
                   Ẩm thực
                 </Link>
                 <div className="flex flex-col space-y-2 pl-4">
-                  <Link href="/culture/north" className="text-base" onClick={() => setIsOpen(false)}>
+                  <Link
+                    href="/culture/north"
+                    className="text-base"
+                    onClick={() => setIsOpen(false)}
+                  >
                     Văn hóa miền Bắc
                   </Link>
-                  <Link href="/culture/central" className="text-base" onClick={() => setIsOpen(false)}>
+                  <Link
+                    href="/culture/central"
+                    className="text-base"
+                    onClick={() => setIsOpen(false)}
+                  >
                     Văn hóa miền Trung
                   </Link>
-                  <Link href="/culture/south" className="text-base" onClick={() => setIsOpen(false)}>
+                  <Link
+                    href="/culture/south"
+                    className="text-base"
+                    onClick={() => setIsOpen(false)}
+                  >
                     Văn hóa miền Nam
                   </Link>
                 </div>
-                <Link href="/about" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
+                <Link
+                  href="/about"
+                  className="text-lg font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
                   Về chúng tôi
                 </Link>
-                <Link href="/contact" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
+                <Link
+                  href="/contact"
+                  className="text-lg font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
                   Liên hệ
                 </Link>
                 <Button className="mt-4" onClick={() => setIsOpen(false)}>
@@ -204,32 +301,35 @@ export function SiteHeader() {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
-const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWithoutRef<"a"> & { title: string }>(
-  ({ className, title, children, ...props }, ref) => {
-    return (
-      <li>
-        <NavigationMenuLink asChild>
-          <a
-            ref={ref}
-            className={cn(
-              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-              className,
-            )}
-            {...props}
-          >
-            <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
-          </a>
-        </NavigationMenuLink>
-      </li>
-    )
-  },
-)
-ListItem.displayName = "ListItem"
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a"> & { title: string }
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
 
 function cn(...classes: any[]) {
-  return classes.filter(Boolean).join(" ")
+  return classes.filter(Boolean).join(" ");
 }
