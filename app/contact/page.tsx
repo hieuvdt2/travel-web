@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react"
+import Contact from '@/app/asset/images/lien-he.jpg'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -50,7 +51,7 @@ export default function ContactPage() {
         {/* Hero Section */}
         <section className="relative">
           <div className="absolute inset-0 bg-black/60 z-10" />
-          <div className="h-[40vh] bg-cover bg-center" style={{ backgroundImage: "url('/images/contact-hero.jpg')" }} />
+          <div className="h-[40vh] bg-auto bg-center"  style={{ backgroundImage: `url(${Contact.src})` }} />
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 md:px-6">
             <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl">
               Liên Hệ Với Chúng Tôi
@@ -76,7 +77,7 @@ export default function ContactPage() {
                   <MapPin className="h-6 w-6 mr-3 text-primary" />
                   <div>
                     <h3 className="font-medium">Địa chỉ</h3>
-                    <p className="text-muted-foreground">123 Đường ABC, Quận XYZ, Thành phố Hà Nội, Việt Nam</p>
+                    <p className="text-muted-foreground">88 Dịch Vọng, Quận Cầu Giấy, Thành phố Hà Nội, Việt Nam</p>
                   </div>
                 </div>
 
@@ -84,7 +85,7 @@ export default function ContactPage() {
                   <Phone className="h-6 w-6 mr-3 text-primary" />
                   <div>
                     <h3 className="font-medium">Điện thoại</h3>
-                    <p className="text-muted-foreground">+84 123 456 789</p>
+                    <p className="text-muted-foreground">+84 0965073926</p>
                     <p className="text-muted-foreground">+84 987 654 321</p>
                   </div>
                 </div>
@@ -93,7 +94,7 @@ export default function ContactPage() {
                   <Mail className="h-6 w-6 mr-3 text-primary" />
                   <div>
                     <h3 className="font-medium">Email</h3>
-                    <p className="text-muted-foreground">info@khamphavietnam.vn</p>
+                    <p className="text-muted-foreground">vivu@khamphadulich.vn</p>
                     <p className="text-muted-foreground">support@khamphavietnam.vn</p>
                   </div>
                 </div>

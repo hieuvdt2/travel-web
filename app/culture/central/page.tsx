@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import VHMienTrung from "@/app/asset/images/van-hoa-mien-trung.jpg"
+import VHMienTrungBanner from "@/app/asset/images/hanh-trinh-di-san-mien-trung.jpg"
 
 export default function CentralCulturePage() {
   return (
@@ -16,8 +17,9 @@ export default function CentralCulturePage() {
         <section className="relative">
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div
-            className="h-[40vh] bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/central-vietnam-hero.png')" }}
+            className="h-[40vh] bg-auto bg-center"
+                     style={{ backgroundImage: `url(${VHMienTrungBanner.src})` }} 
+
           />
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 md:px-6">
             <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl">

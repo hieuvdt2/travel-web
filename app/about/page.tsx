@@ -2,6 +2,14 @@ import Image from "next/image"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { Button } from "@/components/ui/button"
+import About from '@/app/asset/images/about.jpg'
+import Banner from '@/app/asset/images/about-banner.jpeg'
+import User1 from '@/app/asset/images/giam-doc.png'
+import User2 from '@/app/asset/images/user-2.jpg'
+import User3 from '@/app/asset/images/user-3.jpg'
+import User4 from '@/app/asset/images/user-4.jpg'
+
+
 
 export default function AboutPage() {
   return (
@@ -10,11 +18,11 @@ export default function AboutPage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative">
-          <div className="absolute inset-0 bg-black/60 z-10" />
-          <div className="h-[40vh] bg-cover bg-center" style={{ backgroundImage: "url('/images/ha-long-bay.jpg')" }} />
+          {/* <div className="absolute inset-0 bg-black/60 z-10" /> */}
+          <div className="h-[40vh] bg-contain bg-center" style={{ backgroundImage: `url(${Banner.src})` }} />
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 md:px-6">
-            <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl">Về Chúng Tôi</h1>
-            <p className="max-w-[700px] text-white/90 md:text-xl mt-4">Khám phá câu chuyện và sứ mệnh của chúng tôi</p>
+            {/* <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl">Về Chúng Tôi</h1>
+            <p className="max-w-[700px] text-white/90 md:text-xl mt-4">Khám phá câu chuyện và sứ mệnh của chúng tôi</p> */}
           </div>
         </section>
 
@@ -26,7 +34,7 @@ export default function AboutPage() {
                 Câu Chuyện Của Chúng Tôi
               </h2>
               <p className="text-muted-foreground mb-4">
-                Khám Phá Việt Nam được thành lập vào năm 2015 với mục tiêu giới thiệu và quảng bá vẻ đẹp của Việt Nam
+                ViVu VietNam được thành lập vào năm 2017 với mục tiêu giới thiệu và quảng bá vẻ đẹp của Việt Nam
                 đến với du khách trong nước và quốc tế. Chúng tôi là một nhóm những người yêu du lịch, đam mê khám phá
                 và tự hào về đất nước mình.
               </p>
@@ -41,7 +49,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="relative h-[400px] rounded-lg overflow-hidden">
-              <Image src="/images/team.jpg" alt="Đội ngũ Khám Phá Việt Nam" fill className="object-cover" />
+              <Image src={About} alt="Đội ngũ Khám Phá Việt Nam" fill className="object-cover" />
             </div>
           </div>
         </section>
@@ -134,24 +142,24 @@ const teamMembers = [
     name: "Nguyễn Văn A",
     role: "Giám đốc điều hành",
     bio: "Hơn 15 năm kinh nghiệm trong ngành du lịch, đam mê khám phá và chia sẻ vẻ đẹp của Việt Nam.",
-    image: "/images/person1.jpg",
+    image: User1,
   },
   {
     name: "Trần Thị B",
     role: "Giám đốc tour",
     bio: "Chuyên gia lên kế hoạch tour với 10 năm kinh nghiệm, am hiểu sâu sắc về văn hóa và lịch sử Việt Nam.",
-    image: "/images/person2.jpg",
+    image: User2,
   },
   {
     name: "Lê Văn C",
     role: "Trưởng bộ phận marketing",
     bio: "Chuyên gia marketing với niềm đam mê quảng bá du lịch Việt Nam ra thế giới.",
-    image: "/images/person3.jpg",
+    image: User3,
   },
   {
     name: "Phạm Thị D",
     role: "Hướng dẫn viên cấp cao",
     bio: "Hướng dẫn viên giàu kinh nghiệm, thông thạo nhiều ngôn ngữ và am hiểu văn hóa địa phương.",
-    image: "/images/person4.jpg",
+    image: User4,
   },
 ]

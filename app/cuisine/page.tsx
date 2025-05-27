@@ -180,6 +180,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Loader2 } from "lucide-react";
 import api from "@/lib/api";
 import { Food, Foods } from "@/types";
+import AddressTravel from '@/app/asset/images/am-thuc.jpeg'
+
 const VALID_REGIONS = ["all", "north", "central", "south"];
 
 export default function CuisinePage() {
@@ -198,7 +200,7 @@ export default function CuisinePage() {
       : "all";
     setSelectedRegion(region);
   }, [regionFromUrl]);
- console.log('foddsss',foods)
+//  console.log('foddsss',foods)
   const northernFoods = foods.filter((food) => food.attributes.regions.includes("mienBac"));
   const centralFoods = foods.filter((food) =>food.attributes.regions.includes("mienTrung"));
   const southernFoods = foods.filter((food) =>food.attributes.regions.includes("mienNam"));
@@ -225,6 +227,21 @@ export default function CuisinePage() {
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
       <main className="flex-1">
+       <section className="relative">
+   <div className="absolute inset-0 bg-black/25 z-10" />
+          <div
+            className="h-[40vh] bg-contain bg-center"
+           style={{ backgroundImage: `url(${AddressTravel.src})` }} 
+          />
+          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 md:px-6">
+            <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl">
+           Ẩm thực Việt Nam
+            </h1>
+            <p className="max-w-[700px] text-white/90 md:text-xl mt-4">
+              Khám phá các món ăn truyền thống và hiện đại tại Việt Nam
+            </p>
+          </div>
+        </section>
         <section className="container py-8 md:py-12">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">

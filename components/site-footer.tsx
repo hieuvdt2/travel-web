@@ -87,10 +87,10 @@ export function SiteFooter() {
         <div>
           <h3 className="text-lg font-medium mb-4">Liên hệ</h3>
           <address className="not-italic text-muted-foreground">
-            <p>123 Đường ABC, Quận XYZ</p>
+            <p>88 Dịch Vọng, Quận Cầu Giấy</p>
             <p>Thành phố Hà Nội, Việt Nam</p>
-            <p className="mt-2">Email: info@khamphavietnam.vn</p>
-            <p>Điện thoại: +84 123 456 789</p>
+            <p className="mt-2">Email: vivu@khamphadulich.vn</p>
+            <p>Điện thoại: +84 0965073926</p>
           </address>
         </div>
       </div>

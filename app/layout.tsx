@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Khám Phá Việt Nam",
   description: "Khám phá vẻ đẹp tuyệt vời của Việt Nam qua những địa điểm du lịch nổi tiếng và ẩm thực đặc sắc.",
-    generator: 'v0.dev'
+    generator: 'hieuvdt2'
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import { Festivals, Foods, Heritages, TraditionalVillages } from "@/types";
 import api from "@/lib/api";
 import { getUrl } from "@/app/common/utils";
+import VHMBBanner from '@/app/asset/images/van-hoa-mb-banner.webp'
 
 export default function NorthCulturePage() {
   const [cuisine, setCuisine] = useState<Foods[]>([]);
@@ -61,8 +62,8 @@ export default function NorthCulturePage() {
         <section className="relative">
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div
-            className="h-[40vh] bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/north-vietnam-hero.png')" }}
+            className="h-[40vh] bg-auto bg-center"
+        style={{ backgroundImage: `url(${VHMBBanner.src})` }} 
           />
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 md:px-6">
             <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl">

@@ -10,6 +10,8 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { DestinationCard } from "@/components/destination-card";
 import type { Destination } from "@/types";
 import api from "@/lib/api";
+import AddressTravel from '@/app/asset/images/diem-du-lich.jpg'
+
 // import { destinations } from "@/data/destinations"
 
 // Số lượng item hiển thị ban đầu
@@ -109,10 +111,10 @@ export default function DestinationsPage() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative">
-          <div className="absolute inset-0 bg-black/60 z-10" />
+          <div className="absolute inset-0 bg-black/25 z-10" />
           <div
-            className="h-[40vh] bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/destinations-hero.png')" }}
+            className="h-[40vh] bg-contain bg-center"
+           style={{ backgroundImage: `url(${AddressTravel.src})` }} 
           />
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 md:px-6">
             <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl">
