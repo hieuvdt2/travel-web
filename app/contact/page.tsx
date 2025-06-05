@@ -11,12 +11,15 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react"
 import Contact from '@/app/asset/images/lien-he.jpg'
+import api from "@/lib/api"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
+    question: '',
+    phone: '',
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -27,21 +30,27 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
+  
+    try {
+      await api.contact.submitContact(formData)
       setIsSubmitted(true)
       setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
+        phone:"",
+        question:''
       })
-    }, 1500)
+    } catch (error) {
+      console.error("Lỗi khi gửi form:", error)
+      alert("Gửi thất bại, vui lòng thử lại.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -148,6 +157,18 @@ export default function ContactPage() {
                       onChange={handleChange}
                     />
                   </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Số điện thoại</Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="text"
+                      placeholder="Nhập địa số điện thoại của bạn"
+                      required
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
+                  </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="subject">Tiêu đề</Label>
@@ -170,6 +191,18 @@ export default function ContactPage() {
                       rows={5}
                       required
                       value={formData.message}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="question">Câu hỏi</Label>
+                    <Textarea
+                      id="question"
+                      name="question"
+                      placeholder="Nhập nội dung câu hỏi của bạn"
+                      rows={5}
+                      required
+                      value={formData.question}
                       onChange={handleChange}
                     />
                   </div>

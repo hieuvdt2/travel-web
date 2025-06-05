@@ -52,39 +52,32 @@ export default function DestinationsPage() {
     fetchDestinations();
   }, []);
 
-
-
+  // Thêm useEffect mới để xử lý category từ URL
   useEffect(() => {
     if (categoryParam) {
-      console.log('categoryParam',categoryParam)
       setActiveTab(categoryParam);
-    } else if (regionParam) {
-      console.log('3')
- 
-      setActiveTab("all");
-      const filtered = destinations.filter((d) => d.attributes.region === regionParam);
-      
-      console.log('categoryfilteredParam',filtered)
+    }
+  }, [categoryParam]);
 
-      setFilteredDestinations(filtered);
-      return;
+  useEffect(() => {
+    let filtered = [...destinations];
+
+    // Xử lý lọc theo region nếu có
+    if (regionParam) {
+      filtered = filtered.filter((d) => d.attributes.region === regionParam);
     }
 
-    // Lọc điểm đến theo danh mục
-    if (activeTab === "all") {
-      console.log('2')
-
-      setFilteredDestinations(destinations);
-    } else {
-      const filtered = destinations.filter((d) => d.attributes.category === activeTab);
-      console.log('1')
-      setFilteredDestinations(filtered);
+    // Xử lý lọc theo category
+    if (activeTab !== "all") {
+      filtered = filtered.filter((d) => d.attributes.category === activeTab);
     }
 
+    setFilteredDestinations(filtered);
+    
     // Reset số lượng item hiển thị khi chuyển tab
     setVisibleItemsCount(INITIAL_ITEMS_COUNT);
     setShowAll(false);
-  }, [activeTab, categoryParam, regionParam,destinations]);
+  }, [activeTab, categoryParam, regionParam, destinations]);
 
   // Xử lý khi nhấn nút "Xem thêm"
   const handleShowMore = () => {
@@ -137,9 +130,9 @@ export default function DestinationsPage() {
             <div className="flex justify-center">
               <TabsList className="mb-8">
                 <TabsTrigger value="all">Tất cả</TabsTrigger>
-                <TabsTrigger value="spiritual">Tâm linh</TabsTrigger>
-                <TabsTrigger value="beach">Biển</TabsTrigger>
-                <TabsTrigger value="natural">Công trình tự nhiên</TabsTrigger>
+                <TabsTrigger value="tamLinh">Tâm linh</TabsTrigger>
+                <TabsTrigger value="bien">Biển</TabsTrigger>
+                <TabsTrigger value="tuNhien">Công trình tự nhiên</TabsTrigger>
                 <TabsTrigger value="nhanTao">Công trình nhân tạo</TabsTrigger>
               </TabsList>
             </div>

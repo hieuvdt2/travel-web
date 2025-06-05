@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -22,7 +22,8 @@ import Logo from "@/app/asset/images/logo-Vivu.png";
 import coverImage from "@/app/asset/images/dia-danh-noi-tieng.jpg";
 import foodCover from "@/app/asset/images/am-thuc-viet-nam-all.jpg";
 import cultureCover from "@/app/asset/images/van-hoa-3-mien.png";
-export function SiteHeader() {
+
+const SiteHeader = memo(function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -79,19 +80,19 @@ export function SiteHeader() {
                       </NavigationMenuLink>
                     </li>
                     <ListItem
-                      href="/destinations?category=spiritual"
+                      href="/destinations?category=tamLinh"
                       title="Du lịch tâm linh"
                     >
                       Các địa điểm tâm linh nổi tiếng
                     </ListItem>
                     <ListItem
-                      href="/destinations?category=beach"
+                      href="/destinations?category=bien"
                       title="Du lịch biển"
                     >
                       Những bãi biển đẹp nhất Việt Nam
                     </ListItem>
                     <ListItem
-                      href="/destinations?category=natural"
+                      href="/destinations?category=tuNhien"
                       title="Công trình tự nhiên"
                     >
                       Các kỳ quan thiên nhiên tuyệt đẹp
@@ -134,19 +135,19 @@ export function SiteHeader() {
                       </NavigationMenuLink>
                     </li>
                     <ListItem
-                      href="/cuisine?region=north"
+                      href="/cuisine?region=mienBac"
                       title="Ẩm thực miền Bắc"
                     >
                       Những món ăn đặc trưng miền Bắc
                     </ListItem>
                     <ListItem
-                      href="/cuisine?region=central"
+                      href="/cuisine?region=mienTrung"
                       title="Ẩm thực miền Trung"
                     >
                       Những món ăn đặc trưng miền Trung
                     </ListItem>
                     <ListItem
-                      href="/cuisine?region=south"
+                      href="/cuisine?region=mienNam"
                       title="Ẩm thực miền Nam"
                     >
                       Những món ăn đặc trưng miền Nam
@@ -183,16 +184,16 @@ export function SiteHeader() {
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/culture/north" title="Văn hóa miền Bắc">
+                    <ListItem href="/culture/mienBac" title="Văn hóa miền Bắc">
                       Nét đẹp văn hóa đặc sắc của vùng đất ngàn năm văn hiến
                     </ListItem>
                     <ListItem
-                      href="/culture/central"
+                      href="/culture/mienTrung"
                       title="Văn hóa miền Trung"
                     >
                       Nét đẹp văn hóa đặc sắc của vùng đất cố đô và di sản
                     </ListItem>
-                    <ListItem href="/culture/south" title="Văn hóa miền Nam">
+                    <ListItem href="/culture/mienNam" title="Văn hóa miền Nam">
                       Nét đẹp văn hóa đa dạng, phóng khoáng của vùng đất phương
                       Nam
                     </ListItem>
@@ -257,21 +258,21 @@ export function SiteHeader() {
                 </Link>
                 <div className="flex flex-col space-y-2 pl-4">
                   <Link
-                    href="/culture/north"
+                    href="/culture/mienBac"
                     className="text-base"
                     onClick={() => setIsOpen(false)}
                   >
                     Văn hóa miền Bắc
                   </Link>
                   <Link
-                    href="/culture/central"
+                    href="/culture/mienTrung"
                     className="text-base"
                     onClick={() => setIsOpen(false)}
                   >
                     Văn hóa miền Trung
                   </Link>
                   <Link
-                    href="/culture/south"
+                    href="/culture/mienNam"
                     className="text-base"
                     onClick={() => setIsOpen(false)}
                   >
@@ -302,7 +303,7 @@ export function SiteHeader() {
       </div>
     </header>
   );
-}
+});
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -333,3 +334,5 @@ ListItem.displayName = "ListItem";
 function cn(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
+
+export { SiteHeader };

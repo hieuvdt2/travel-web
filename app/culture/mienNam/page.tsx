@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image"
 import Link from "next/link"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -5,10 +6,53 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { useEffect, useState } from "react"
+import { Foods, Heritages, TraditionalVillages, Festivals, Musicals } from "@/types"
+import api from "@/lib/api"
+import { getUrl } from "@/app/common/utils"
 import VHMienNam from "@/app/asset/images/van-hoa-mine-nam.jpg"
 import VHMienNamBanner from "@/app/asset/images/van-hoa-mien-nam-banner.jpg"
+import CaiLuong from "@/app/asset/images/cai-luong.jpg"
+import DonCaTaiTu from "@/app/asset/images/don-ca-tai-tu.jpg"
+import HoMienNam from "@/app/asset/images/ho-mien-nam.jpg"
+
 
 export default function SouthCulturePage() {
+  const [activeTab, setActiveTab] = useState("festivals");
+  const [festivals, setFestivals] = useState<Festivals[]>([]);
+  const [cuisine, setCuisine] = useState<Foods[]>([]);
+  const [crafts, setCrafts] = useState<TraditionalVillages[]>([]);
+  const [heritage, setHeritage] = useState<Heritages[]>([]);
+  const [musical, setMusical] = useState<Musicals[]>([]);
+  console.log('cuisine',cuisine)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (activeTab === "cuisine") {
+          console.log('activeTab',1)
+          const data = await api.cuisine.getFoodsByRegion("mienNam");
+          setCuisine(data);
+        } else if (activeTab === "festivals") {
+          const data = await api.festival.getFestivalByRegion("mienNam");
+          setFestivals(data);
+        } else if (activeTab === "crafts") {
+          const data =
+            await api.traditionalVillage.getTraditionalVillageByRegion(
+              "mienBac"
+            );
+          setCrafts(data);
+        } else if (activeTab === "music") {
+          const data = await api.musical.getMusicalByRegion("mienNam");
+          setMusical(data);
+        }
+      } catch (error) {
+        console.error("Lỗi khi tải dữ liệu tab:", error);
+      }
+    };
+
+    fetchData();
+  }, [activeTab]);
+  console.log('musical',musical)
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -57,7 +101,8 @@ export default function SouthCulturePage() {
         {/* Cultural Categories */}
         <section className="bg-muted py-12 md:py-16 lg:py-20">
           <div className="container">
-            <Tabs defaultValue="music" className="w-full">
+            <Tabs defaultValue="music" className="w-full" value={activeTab}
+              onValueChange={setActiveTab}>
               <div className="flex justify-center mb-8">
                 <TabsList>
                   <TabsTrigger value="music">Âm nhạc dân gian</TabsTrigger>
@@ -69,61 +114,90 @@ export default function SouthCulturePage() {
 
               <TabsContent value="music">
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {music.map((item) => (
-                    <Card key={item.name}>
-                      <div className="relative h-48">
-                        <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" />
-                      </div>
-                      <CardHeader>
-                        <CardTitle>{item.name}</CardTitle>
-                        <CardDescription>{item.origin}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
-                      </CardContent>
-                    </Card>
-                  ))}
+                  {musical.map((item) => {
+                    const imageData = item?.attributes?.image?.data?.attributes;
+                    const imageUrl = getUrl(imageData?.url);
+                    return (
+                      <Card key={item.id}>
+                        <div className="relative h-48">
+                          <Image src={imageUrl || "/placeholder.svg"} alt={item.attributes.image.data.attributes.name} fill className="object-cover" />
+                        </div>
+                        <CardHeader>
+                          <CardTitle>{item.attributes.name}</CardTitle>
+                          <CardDescription>{item.attributes.origin}</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-sm text-muted-foreground">{item.attributes.description}</p>
+                        </CardContent>
+                      </Card>
+                    )
+                  })}
                 </div>
               </TabsContent>
 
               <TabsContent value="festivals">
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {festivals.map((item) => (
-                    <Card key={item.name}>
-                      <div className="relative h-48">
-                        <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" />
-                      </div>
-                      <CardHeader>
-                        <CardTitle>{item.name}</CardTitle>
-                        <CardDescription>{item.time}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
-                      </CardContent>
-                    </Card>
-                  ))}
+                  {festivals.map((item) => {
+                    const imageData = item?.attributes?.image?.data?.attributes;
+                    const imageUrl = getUrl(imageData?.url);
+                    return (
+                      <Card key={item.attributes.name}>
+                        <div className="relative h-48">
+                          <Image
+                            src={imageUrl || "/placeholder.svg"}
+                            alt={item.attributes.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <CardHeader>
+                          <CardTitle>{item.attributes.name}</CardTitle>
+                          <CardDescription>
+                            {item.attributes.origin}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-sm text-muted-foreground">
+                            {item.attributes.description}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
                 </div>
               </TabsContent>
 
-              <TabsContent value="cuisine">
+        <TabsContent value="cuisine">
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {cuisine.map((item) => (
-                    <Card key={item.name}>
-                      <div className="relative h-48">
-                        <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" />
-                      </div>
-                      <CardHeader>
-                        <CardTitle>{item.name}</CardTitle>
-                        <CardDescription>{item.origin}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
-                      </CardContent>
-                    </Card>
-                  ))}
+                  {cuisine.map((item) => {
+                    const imageData = item?.attributes?.image?.data?.attributes;
+                    const imageUrl = getUrl(imageData?.url);
+                    return (
+                      <Card key={item.attributes.name}>
+                        <div className="relative h-48">
+                          <Image
+                            src={imageUrl || "/placeholder.svg"}
+                            alt={item.attributes.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <CardHeader>
+                          <CardTitle>{item.attributes.name}</CardTitle>
+                          <CardDescription>
+                            {item.attributes.origin}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <p className="text-sm text-muted-foreground">
+                            {item.attributes.description}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
                 </div>
               </TabsContent>
-
               <TabsContent value="lifestyle">
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {lifestyle.map((item) => (
@@ -209,10 +283,10 @@ export default function SouthCulturePage() {
               Hãy đến và trải nghiệm nét đẹp văn hóa đa dạng, phóng khoáng của vùng đất phương Nam
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/destinations?region=south">
+              <Link href="/destinations?region=mienNam">
                 <Button size="lg">Khám phá điểm đến</Button>
               </Link>
-              <Link href="/cuisine?region=south">
+              <Link href="/cuisine?region=mienNam">
                 <Button size="lg" variant="outline">
                   Khám phá ẩm thực
                 </Button>
@@ -231,66 +305,66 @@ const music = [
     name: "Đờn ca tài tử",
     origin: "Nam Bộ",
     description: "Di sản văn hóa phi vật thể của nhân loại, là loại hình âm nhạc dân gian đặc trưng của miền Nam.",
-    image: "/images/don-ca-tai-tu.png",
+    image: DonCaTaiTu,
   },
   {
     name: "Cải lương",
     origin: "Nam Bộ",
     description: "Loại hình sân khấu truyền thống của miền Nam, kết hợp giữa ca, nhạc, kịch với âm nhạc tài tử.",
-    image: "/images/cai-luong.png",
+    image: CaiLuong,
   },
   {
     name: "Hò miền Nam",
     origin: "Đồng bằng sông Cửu Long",
     description:
       "Các làn điệu hò đặc trưng của miền Nam như hò lơ, hò đồng tháp, hò cấy, thường được hát trong lúc lao động.",
-    image: "/images/ho-mien-nam.png",
+    image: HoMienNam,
   },
 ]
 
-const festivals = [
-  {
-    name: "Lễ hội Nghinh Ông",
-    time: "Tháng 8 Âm lịch",
-    description:
-      "Lễ hội truyền thống của ngư dân miền Nam để tỏ lòng biết ơn và cầu mong Cá Ông (cá Voi) phù hộ cho ngư dân.",
-    image: "/images/nghinh-ong.png",
-  },
-  {
-    name: "Lễ hội Bà Chúa Xứ",
-    time: "Tháng 4-5 Âm lịch",
-    description: "Lễ hội lớn nhất vùng Thất Sơn (An Giang), thờ Bà Chúa Xứ - vị thần được người dân Nam Bộ tôn kính.",
-    image: "/images/ba-chua-xu.png",
-  },
-  {
-    name: "Lễ hội Ok Om Bok",
-    time: "Tháng 10 Âm lịch",
-    description: "Lễ hội truyền thống của người Khmer Nam Bộ để tạ ơn thần Mặt Trăng đã ban cho mùa màng bội thu.",
-    image: "/images/ok-om-bok.png",
-  },
-]
+// const festivals = [
+//   {
+//     name: "Lễ hội Nghinh Ông",
+//     time: "Tháng 8 Âm lịch",
+//     description:
+//       "Lễ hội truyền thống của ngư dân miền Nam để tỏ lòng biết ơn và cầu mong Cá Ông (cá Voi) phù hộ cho ngư dân.",
+//     image: "/images/nghinh-ong.png",
+//   },
+//   {
+//     name: "Lễ hội Bà Chúa Xứ",
+//     time: "Tháng 4-5 Âm lịch",
+//     description: "Lễ hội lớn nhất vùng Thất Sơn (An Giang), thờ Bà Chúa Xứ - vị thần được người dân Nam Bộ tôn kính.",
+//     image: "/images/ba-chua-xu.png",
+//   },
+//   {
+//     name: "Lễ hội Ok Om Bok",
+//     time: "Tháng 10 Âm lịch",
+//     description: "Lễ hội truyền thống của người Khmer Nam Bộ để tạ ơn thần Mặt Trăng đã ban cho mùa màng bội thu.",
+//     image: "/images/ok-om-bok.png",
+//   },
+// ]
 
-const cuisine = [
-  {
-    name: "Hủ tiếu Nam Vang",
-    origin: "Sài Gòn",
-    description:
-      "Món ăn kết hợp giữa văn hóa Việt và Hoa, với sợi hủ tiếu dai, nước dùng trong ngọt và nhiều loại thịt.",
-    image: "/images/hu-tieu.png",
-  },
-  {
-    name: "Bánh tráng trộn",
-    origin: "Sài Gòn",
-    description: "Món ăn vặt đặc trưng của Sài Gòn với bánh tráng cắt sợi trộn với đủ loại gia vị và trứng cút.",
-    image: "/images/banh-trang-tron.png",
-  },
-  {
-    name: "Cơm tấm",
-    origin: "Sài Gòn",
-    description: "Món cơm đặc trưng của Sài Gòn với gạo tấm, sườn nướng, bì, chả, trứng và nước mắm pha đặc biệt.",
-    image: "/images/com-tam.png",
-  },
-]
+// const cuisine = [
+//   {
+//     name: "Hủ tiếu Nam Vang",
+//     origin: "Sài Gòn",
+//     description:
+//       "Món ăn kết hợp giữa văn hóa Việt và Hoa, với sợi hủ tiếu dai, nước dùng trong ngọt và nhiều loại thịt.",
+//     image: "/images/hu-tieu.png",
+//   },
+//   {
+//     name: "Bánh tráng trộn",
+//     origin: "Sài Gòn",
+//     description: "Món ăn vặt đặc trưng của Sài Gòn với bánh tráng cắt sợi trộn với đủ loại gia vị và trứng cút.",
+//     image: "/images/banh-trang-tron.png",
+//   },
+//   {
+//     name: "Cơm tấm",
+//     origin: "Sài Gòn",
+//     description: "Món cơm đặc trưng của Sài Gòn với gạo tấm, sườn nướng, bì, chả, trứng và nước mắm pha đặc biệt.",
+//     image: "/images/com-tam.png",
+//   },
+// ]
 
 const lifestyle = [
   {

@@ -10,7 +10,7 @@ export const destinations: Destination[] = [
       "Vịnh Hạ Long là một trong những kỳ quan thiên nhiên nổi tiếng nhất của Việt Nam, được UNESCO công nhận là Di sản Thiên nhiên Thế giới. Với hơn 1.600 hòn đảo đá vôi lớn nhỏ nổi trên mặt nước xanh ngọc bích, Vịnh Hạ Long tạo nên một cảnh quan kỳ vĩ và độc đáo. Mỗi hòn đảo đều có hình thù đặc biệt và gắn liền với những câu chuyện, truyền thuyết thú vị. Du khách có thể tham gia các tour thuyền để khám phá vẻ đẹp của vịnh, thăm các hang động tự nhiên, và tận hưởng không khí trong lành.",
     imageUrl: "/images/ha-long-bay.jpg",
     category: "natural",
-    region: "north",
+    region: "mienBac",
     highlights: [
       "Ngắm nhìn hàng nghìn hòn đảo đá vôi",
       "Khám phá các hang động tự nhiên như Hang Sửng Sốt, Hang Đầu Gỗ",
@@ -36,7 +36,7 @@ export const destinations: Destination[] = [
       "Phố cổ Hội An là một trong những điểm đến hấp dẫn nhất Việt Nam, được UNESCO công nhận là Di sản Văn hóa Thế giới. Với kiến trúc cổ kính pha trộn giữa các phong cách Việt Nam, Trung Quốc và Nhật Bản, Hội An mang đến cho du khách cảm giác như đang lạc vào một không gian thời gian khác. Những con phố nhỏ lát gạch, những ngôi nhà cổ màu vàng, và đặc biệt là hàng nghìn chiếc đèn lồng đầy màu sắc thắp sáng vào buổi tối tạo nên một khung cảnh huyền ảo, lãng mạn. Hội An không chỉ nổi tiếng với vẻ đẹp kiến trúc mà còn là thiên đường ẩm thực với nhiều món ăn đặc sản.",
     imageUrl: "/images/hoi-an.jpg",
     category: "nhanTao",
-    region: "central",
+    region: "mienTrung",
     highlights: [
       "Dạo bước qua các con phố cổ đầy màu sắc",
       "Ngắm cảnh Chùa Cầu Nhật Bản",
@@ -62,7 +62,7 @@ export const destinations: Destination[] = [
       'Sa Pa là một thị trấn miền núi nằm ở độ cao khoảng 1.600m so với mực nước biển, thuộc tỉnh Lào Cai. Nơi đây nổi tiếng với khung cảnh thiên nhiên hùng vĩ, những thửa ruộng bậc thang trải dài trên sườn núi và văn hóa đặc sắc của các dân tộc thiểu số như H\'Mông, Dao, Tày. Sa Pa còn là nơi có đỉnh Fansipan - "nóc nhà Đông Dương" với độ cao 3.143m. Khí hậu mát mẻ quanh năm khiến Sa Pa trở thành điểm nghỉ dưỡng lý tưởng để tránh cái nóng oi bức của mùa hè.',
     imageUrl: "/images/sapa.jpg",
     category: "natural",
-    region: "north",
+    region: "mienBac",
     highlights: [
       "Chiêm ngưỡng ruộng bậc thang tuyệt đẹp ở Mường Hoa, Tả Van",
       "Khám phá văn hóa của người H'Mông, Dao Đỏ",
@@ -89,7 +89,7 @@ export const destinations: Destination[] = [
       "Vườn Quốc gia Phong Nha - Kẻ Bàng được UNESCO công nhận là Di sản Thiên nhiên Thế giới, nổi tiếng với hệ thống hang động đá vôi kỳ vĩ và đa dạng sinh học phong phú. Đây là nơi có hang Sơn Đoòng - hang động lớn nhất thế giới, được phát hiện vào năm 2009. Ngoài ra, khu vực này còn có nhiều hang động tuyệt đẹp khác như hang Phong Nha, hang Thiên Đường, hang Én. Phong Nha - Kẻ Bàng không chỉ hấp dẫn bởi vẻ đẹp của các hang động mà còn bởi hệ sinh thái đa dạng với nhiều loài động thực vật quý hiếm.",
     imageUrl: "/images/phong-nha.jpg",
     category: "natural",
-    region: "central",
+    region: "mienTrung",
     highlights: [
       "Khám phá hang Sơn Đoòng - hang động lớn nhất thế giới",
       "Tham quan hang Phong Nha bằng thuyền",
@@ -115,7 +115,7 @@ export const destinations: Destination[] = [
       "Huế là cố đô của Việt Nam dưới triều Nguyễn (1802-1945), được UNESCO công nhận là Di sản Văn hóa Thế giới. Thành phố này nổi tiếng với Đại Nội - kinh thành cổ, nơi có Hoàng thành, Tử Cấm Thành và nhiều công trình kiến trúc cung đình độc đáo. Bên cạnh đó, Huế còn có hệ thống các lăng tẩm vua chúa được xây dựng công phu như lăng Tự Đức, lăng Minh Mạng, lăng Khải Định. Huế không chỉ hấp dẫn bởi di sản văn hóa phong phú mà còn bởi nền ẩm thực cung đình tinh tế, được coi là một trong những nền ẩm thực đặc sắc nhất Việt Nam.",
     imageUrl: "/images/hue.jpg",
     category: "nhanTao",
-    region: "central",
+    region: "mienTrung",
     highlights: [
       "Tham quan Đại Nội và Hoàng thành",
       "Viếng thăm các lăng tẩm vua chúa nhà Nguyễn",
@@ -141,7 +141,7 @@ export const destinations: Destination[] = [
       "Đồng bằng sông Cửu Long là vùng đất phì nhiêu ở phía Nam Việt Nam, nơi sông Mekong đổ ra biển. Khu vực này nổi tiếng với hệ thống kênh rạch chằng chịt, những khu vườn trái cây xanh tươi và các chợ nổi sôi động như Cái Răng, Cái Bè. Đồng bằng sông Cửu Long còn là nơi sinh sống của nhiều cộng đồng dân tộc với nền văn hóa đa dạng, phong phú. Du khách đến đây có thể trải nghiệm cuộc sống miệt vườn, thưởng thức trái cây tươi ngon và tìm hiểu về nét văn hóa đặc trưng của người dân Nam Bộ.",
     imageUrl: "/images/mekong-delta.jpg",
     category: "natural",
-    region: "south",
+    region: "mienNam",
     highlights: [
       "Tham quan chợ nổi Cái Răng, Cái Bè",
       "Khám phá hệ thống kênh rạch bằng thuyền",
@@ -168,7 +168,7 @@ export const destinations: Destination[] = [
       "Nha Trang là một trong những thành phố biển nổi tiếng nhất Việt Nam, với bãi biển dài 7km cát trắng mịn và nước biển trong xanh. Thành phố này không chỉ hấp dẫn bởi vẻ đẹp tự nhiên mà còn bởi hệ thống cơ sở hạ tầng du lịch phát triển với nhiều khách sạn, resort cao cấp và các dịch vụ giải trí đa dạng. Nha Trang còn là điểm đến lý tưởng cho những ai yêu thích các hoạt động dưới nước như lặn biển, lướt ván, câu cá. Ngoài ra, du khách còn có thể tham quan các điểm du lịch nổi tiếng như Vinpearl Land, Tháp Bà Ponagar, và Viện Hải dương học.",
     imageUrl: "/images/nha-trang.jpg",
     category: "beach",
-    region: "central",
+    region: "mienTrung",
     highlights: [
       "Tắm biển và thư giãn trên bãi biển Nha Trang",
       "Tham quan Vinpearl Land trên đảo Hòn Tre",
@@ -194,7 +194,7 @@ export const destinations: Destination[] = [
       "Phú Quốc là hòn đảo lớn nhất Việt Nam, nằm trong vịnh Thái Lan. Đảo nổi tiếng với những bãi biển cát trắng mịn, nước biển trong xanh và những khu rừng nguyên sinh. Phú Quốc đang phát triển nhanh chóng với nhiều khu resort cao cấp, nhưng vẫn giữ được vẻ đẹp hoang sơ ở nhiều nơi. Đảo còn nổi tiếng với các sản phẩm đặc sản như nước mắm, hồ tiêu và ngọc trai. Du khách đến Phú Quốc có thể tham gia nhiều hoạt động như lặn biển, câu cá, khám phá rừng quốc gia và thưởng thức hải sản tươi ngon.",
     imageUrl: "/images/phu-quoc.jpg",
     category: "beach",
-    region: "south",
+    region: "mienNam",
     highlights: [
       "Tắm biển tại Bãi Sao - một trong những bãi biển đẹp nhất Việt Nam",
       "Khám phá Vườn quốc gia Phú Quốc",
@@ -221,7 +221,7 @@ export const destinations: Destination[] = [
       "Đà Lạt là thành phố nghỉ dưỡng nổi tiếng nằm trên cao nguyên Lâm Viên ở độ cao khoảng 1.500m so với mực nước biển. Với khí hậu mát mẻ quanh năm, Đà Lạt được mệnh danh là 'thành phố ngàn hoa' hay 'thành phố sương mù'. Nơi đây nổi tiếng với kiến trúc Pháp cổ điển, những cánh đồng hoa rực rỡ và cảnh quan thiên nhiên tuyệt đẹp với nhiều hồ, thác, đồi thông. Đà Lạt còn là điểm đến lý tưởng cho những ai yêu thích các hoạt động ngoài trời như đi bộ đường dài, cắm trại, và thể thao mạo hiểm.",
     imageUrl: "/images/da-lat.jpg",
     category: "natural",
-    region: "central",
+    region: "mienTrung",
     highlights: [
       "Tham quan Nhà ga Đà Lạt - nhà ga cổ kính nhất Đông Dương",
       "Khám phá Dinh Bảo Đại - nơi nghỉ dưỡng của vua Bảo Đại",
@@ -247,7 +247,7 @@ export const destinations: Destination[] = [
       "Hà Nội là thủ đô của Việt Nam với lịch sử hơn 1000 năm, nơi giao thoa giữa văn hóa truyền thống và hiện đại. Thành phố nổi tiếng với khu phố cổ 36 phố phường, nơi du khách có thể khám phá những con phố nhỏ sầm uất với các cửa hàng buôn bán đủ loại hàng hóa. Hà Nội còn có nhiều di tích lịch sử, văn hóa quan trọng như Văn Miếu - Quốc Tử Giám, Hoàng thành Thăng Long, Nhà tù Hỏa Lò. Đặc biệt, Hà Nội nổi tiếng với nền ẩm thực phong phú, từ những món ăn đường phố bình dân đến các món ăn tinh tế của người Hà Nội.",
     imageUrl: "/images/ha-noi.jpg",
     category: "nhanTao",
-    region: "north",
+    region: "mienBac",
     highlights: [
       "Dạo bước quanh Hồ Hoàn Kiếm và thăm đền Ngọc Sơn",
       "Khám phá 36 phố phường cổ",
@@ -274,7 +274,7 @@ export const destinations: Destination[] = [
       "Tràng An - Tam Cốc là khu du lịch sinh thái nổi tiếng thuộc tỉnh Ninh Bình, được UNESCO công nhận là Di sản Thiên nhiên và Văn hóa Thế giới. Khu vực này được mệnh danh là 'Hạ Long trên cạn' với hệ thống núi đá vôi hùng vĩ, những dòng sông uốn lượn và các hang động tự nhiên. Du khách có thể đi thuyền dọc theo sông Ngô Đồng, ngắm nhìn những cánh đồng lúa xanh mướt (hoặc vàng óng vào mùa gặt) trải dài dưới chân núi. Ngoài vẻ đẹp thiên nhiên, Tràng An - Tam Cốc còn có nhiều di tích lịch sử, văn hóa quan trọng như cố đô Hoa Lư, đền chùa Bái Đính.",
     imageUrl: "/images/trang-an.jpg",
     category: "natural",
-    region: "north",
+    region: "mienBac",
     highlights: [
       "Đi thuyền dọc theo sông Ngô Đồng qua Tam Cốc",
       "Khám phá các hang động tự nhiên tại Tràng An",
@@ -300,7 +300,7 @@ export const destinations: Destination[] = [
       "Yên Tử là một dãy núi thuộc tỉnh Quảng Ninh, nổi tiếng là thánh địa Phật giáo của Việt Nam. Đây là nơi vua Trần Nhân Tông đã xuất gia và sáng lập ra dòng thiền Trúc Lâm Yên Tử. Trên dãy núi Yên Tử có hệ thống chùa, am, tháp cổ được xây dựng từ thế kỷ 13 đến nay. Đỉnh cao nhất của Yên Tử là Chùa Đồng ở độ cao 1.068m so với mực nước biển. Hàng năm, Yên Tử đón hàng triệu lượt khách hành hương, đặc biệt là vào mùa lễ hội từ tháng Giêng đến tháng Ba âm lịch.",
     imageUrl: "/images/yen-tu.jpg",
     category: "spiritual",
-    region: "north",
+    region: "mienBac",
     highlights: [
       "Hành hương lên đỉnh Yên Tử thăm Chùa Đồng",
       "Tham quan Thiền viện Trúc Lâm Yên Tử",
@@ -326,7 +326,7 @@ export const destinations: Destination[] = [
       "Mũi Né là một trong những bãi biển nổi tiếng nhất Việt Nam, nằm ở tỉnh Bình Thuận. Nơi đây nổi tiếng với bãi biển dài, cát trắng mịn và những đồi cát vàng, đỏ tuyệt đẹp. Mũi Né còn được biết đến là thiên đường của các môn thể thao biển như lướt ván diều, lướt ván buồm nhờ có gió biển mạnh quanh năm. Bên cạnh đó, du khách còn có thể tham quan làng chài Mũi Né đầy màu sắc, suối Tiên với những khe nước đỏ độc đáo và Bàu Trắng - một hồ nước ngọt giữa sa mạc cát.",
     imageUrl: "/images/mui-ne.jpg",
     category: "beach",
-    region: "south",
+    region: "mienNam",
     highlights: [
       "Ngắm bình minh hoặc hoàng hôn trên đồi cát",
       "Tham quan làng chài Mũi Né",
@@ -352,7 +352,7 @@ export const destinations: Destination[] = [
       "Côn Đảo là quần đảo gồm 16 hòn đảo nằm ở phía Nam Việt Nam, thuộc tỉnh Bà Rịa - Vũng Tàu. Trong quá khứ, Côn Đảo nổi tiếng là nơi giam giữ tù nhân chính trị trong thời Pháp thuộc và chế độ Sài Gòn. Ngày nay, Côn Đảo trở thành điểm du lịch hấp dẫn với những bãi biển hoang sơ, nước biển trong xanh và hệ sinh thái đa dạng. Côn Đảo còn là nơi có Vườn quốc gia Côn Đảo với nhiều loài động thực vật quý hiếm. Du khách đến Côn Đảo không chỉ để tắm biển, lặn ngắm san hô mà còn để tìm hiểu về lịch sử qua các di tích như nhà tù Côn Đảo, nghĩa trang Hàng Dương.",
     imageUrl: "/images/con-dao.jpg",
     category: "beach",
-    region: "south",
+    region: "mienNam",
     highlights: [
       "Tham quan nhà tù Côn Đảo và nghĩa trang Hàng Dương",
       "Tắm biển tại Đầm Trầu, Bãi Nhát",
@@ -378,7 +378,7 @@ export const destinations: Destination[] = [
       "Bà Nà Hills là khu du lịch nổi tiếng nằm trên đỉnh núi Chúa ở độ cao 1.487m so với mực nước biển, thuộc thành phố Đà Nẵng. Nơi đây nổi tiếng với Cầu Vàng - cây cầu đi bộ được thiết kế độc đáo với đôi bàn tay khổng lồ nâng đỡ, đã trở thành biểu tượng du lịch của Việt Nam trên truyền thông quốc tế. Bà Nà Hills còn có khu làng Pháp với kiến trúc châu Âu cổ điển, vườn hoa Le Jardin D'Amour, và công viên giải trí Fantasy Park với nhiều trò chơi hấp dẫn. Với khí hậu mát mẻ quanh năm, Bà Nà Hills là điểm nghỉ dưỡng lý tưởng để tránh cái nóng của mùa hè.",
     imageUrl: "/images/ba-na-hills.jpg",
     category: "nhanTao",
-    region: "central",
+    region: "mienTrung",
     highlights: [
       "Tham quan và chụp ảnh tại Cầu Vàng",
       "Khám phá làng Pháp với kiến trúc châu Âu",
@@ -405,7 +405,7 @@ export const destinations: Destination[] = [
       "Chùa Hương, hay còn gọi là Hương Sơn, là một quần thể chùa, đền, am nằm rải rác trong dãy núi Hương Tích thuộc huyện Mỹ Đức, Hà Nội. Đây là một trong những trung tâm hành hương lớn nhất của Phật giáo Việt Nam, đặc biệt là vào mùa lễ hội từ tháng Giêng đến tháng Ba âm lịch. Du khách đến Chùa Hương thường bắt đầu hành trình bằng việc đi thuyền trên suối Yến, sau đó leo núi để thăm các ngôi chùa, đền như Chùa Thiên Trù, Đền Trình, và đặc biệt là Chùa Hương Tích nằm trong động Hương Tích. Chùa Hương không chỉ là điểm đến tâm linh mà còn là nơi có cảnh quan thiên nhiên tuyệt đẹp với núi non, hang động, suối nước.",
     imageUrl: "/images/perfume-pagoda.jpg",
     category: "spiritual",
-    region: "north",
+    region: "mienBac",
     highlights: [
       "Đi thuyền trên suối Yến ngắm cảnh núi non hùng vĩ",
       "Hành hương lên Chùa Hương Tích trong động Hương Tích",
