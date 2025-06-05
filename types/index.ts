@@ -202,4 +202,19 @@ export interface Festival {
   image: Image
 }
 
-
+// Am nhạc dân gian
+export interface Musicals{
+  id: number;
+  attributes: Musical;
+}
+export interface Musical {
+  name: string
+  location: string
+  description: string
+  region: string
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+  origin:string
+  image: Image
+}

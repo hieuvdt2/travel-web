@@ -34,9 +34,9 @@ export default function HomePage() {
               <div className="flex justify-center">
                 <TabsList className="mb-8">
                   <TabsTrigger value="all">Tất cả</TabsTrigger>
-                  <TabsTrigger value="spiritual">Tâm linh</TabsTrigger>
-                  <TabsTrigger value="beach">Biển</TabsTrigger>
-                  <TabsTrigger value="natural">Công trình tự nhiên</TabsTrigger>
+                  <TabsTrigger value="tamLinh">Tâm linh</TabsTrigger>
+                  <TabsTrigger value="bien">Biển</TabsTrigger>
+                  <TabsTrigger value="tuNhien">Công trình tự nhiên</TabsTrigger>
                   <TabsTrigger value="nhanTao">Công trình nhân tạo</TabsTrigger>
                 </TabsList>
               </div>

@@ -189,7 +189,7 @@ export default function CulturePage() {
 
 const regions = [
   {
-    id: "north",
+    id: "mienBac",
     name: "Miền Bắc",
     description:
       "Văn hóa đậm đà bản sắc dân tộc với lịch sử lâu đời, lễ hội truyền thống và ẩm thực đặc sắc",
@@ -202,7 +202,7 @@ const regions = [
     ],
   },
   {
-    id: "central",
+    id: "mienTrung",
     name: "Miền Trung",
     description:
       "Vùng đất của di sản văn hóa thế giới, cố đô Huế và những làn điệu dân ca đặc sắc",
@@ -215,7 +215,7 @@ const regions = [
     ],
   },
   {
-    id: "south",
+    id: "mienNam",
     name: "Miền Nam",
     description:
       "Vùng đất trẻ trung, năng động với văn hóa đa dạng, phóng khoáng và giao thoa nhiều nền văn hóa",

@@ -31,7 +31,7 @@ export default function ExampleUsage() {
               description: "Di sản thiên nhiên thế giới với hàng nghìn hòn đảo đá vôi hùng vĩ giữa biển khơi.",
               image: "/images/ha-long-bay.jpg",
               category: "natural",
-              region: "north",
+              region: "mienBac",
             },
             {
               id: 2,
@@ -40,7 +40,7 @@ export default function ExampleUsage() {
               description: "Phố cổ xinh đẹp với kiến trúc độc đáo và những chiếc đèn lồng đầy màu sắc.",
               image: "/images/hoi-an.png",
               category: "nhanTao",
-              region: "central",
+              region: "mienTrung",
             },
             {
               id: 3,
@@ -49,7 +49,7 @@ export default function ExampleUsage() {
               description: "Thị trấn trong mây với những thửa ruộng bậc thang tuyệt đẹp và văn hóa dân tộc đặc sắc.",
               image: "/images/sapa.png",
               category: "natural",
-              region: "north",
+              region: "mienBac",
             },
           ])
           setLoading(false)
@@ -140,7 +140,7 @@ const response = await api.destinations.getDestinationsByCategory('beach');
 const beachDestinations = response.data;
 
 // Lấy điểm đến theo vùng miền
-const response = await api.destinations.getDestinationsByRegion('north');
+const response = await api.destinations.getDestinationsByRegion('mienBac');
 const northDestinations = response.data;
 
 // Lấy tất cả món ăn

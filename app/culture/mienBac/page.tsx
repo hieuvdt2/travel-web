@@ -340,10 +340,10 @@ export default function NorthCulturePage() {
               năm văn hiến
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/destinations?region=north">
+              <Link href="/destinations?region=mienBac">
                 <Button size="lg">Khám phá điểm đến</Button>
               </Link>
-              <Link href="/cuisine?region=north">
+              <Link href="/cuisine?region=mienBac">
                 <Button size="lg" variant="outline">
                   Khám phá ẩm thực
                 </Button>

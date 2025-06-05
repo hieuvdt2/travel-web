@@ -1,5 +1,5 @@
 // Export tất cả các services và types
-export * from "./api-config"
+// export * from "./api-config"
 export * from "./api-client"
 // export * from "./types"
 
@@ -22,6 +22,8 @@ import { bannerService } from "./services/banner-service"
 import { festivalService} from "./services/festival-service"
 import { heritageService} from "./services/heritage-service"
 import { traditionalVillageService} from "./services/traditional-village.service"
+import { musicalService} from "./services/musical-service"
+import { contactService} from "./services/contact-service"
 
 
 
@@ -36,7 +38,9 @@ export const api = {
   banners:bannerService,
   festival:festivalService,
   heritage:heritageService,
-  traditionalVillage:traditionalVillageService
+  traditionalVillage:traditionalVillageService,
+  musical:musicalService,
+  contact:contactService
 
 }
 

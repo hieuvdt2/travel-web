@@ -63,17 +63,17 @@ export function SiteFooter() {
           <h3 className="text-lg font-medium mb-4">Danh mục</h3>
           <ul className="space-y-2">
             <li>
-              <Link href="/destinations?category=spiritual" className="text-muted-foreground hover:text-foreground">
+              <Link href="/destinations?category=tamLinh" className="text-muted-foreground hover:text-foreground">
                 Du lịch tâm linh
               </Link>
             </li>
             <li>
-              <Link href="/destinations?category=beach" className="text-muted-foreground hover:text-foreground">
+              <Link href="/destinations?category=bien" className="text-muted-foreground hover:text-foreground">
                 Du lịch biển
               </Link>
             </li>
             <li>
-              <Link href="/destinations?category=natural" className="text-muted-foreground hover:text-foreground">
+              <Link href="/destinations?category=tuNhien" className="text-muted-foreground hover:text-foreground">
                 Công trình tự nhiên
               </Link>
             </li>

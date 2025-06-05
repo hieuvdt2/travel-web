@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image"
 import Link from "next/link"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -7,8 +8,53 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import VHMienTrung from "@/app/asset/images/van-hoa-mien-trung.jpg"
 import VHMienTrungBanner from "@/app/asset/images/hanh-trinh-di-san-mien-trung.jpg"
+import { useEffect, useState } from "react"
+import { Festivals, Foods, Heritages, Musicals, TraditionalVillages } from "@/types"
+import api from "@/lib/api"
+import { getUrl } from "@/app/common/utils"
+import NhaNhacCungDinhHue from "@/app/asset/images/nha-nhac-cung-dinh-hue.jpg"
+import AmThucCungDinhHue from "@/app/asset/images/am-thuc-cung-dinh-hue-0.jpg" 
 
 export default function CentralCulturePage() {
+  const [activeTab, setActiveTab] = useState("heritage");
+  const [festivals, setFestivals] = useState<Festivals[]>([]);
+  const [cuisine, setCuisine] = useState<Foods[]>([]);
+  const [crafts, setCrafts] = useState<TraditionalVillages[]>([]);
+  const [heritage, setHeritage] = useState<Heritages[]>([]);
+  const [musical, setMusical] = useState<Musicals[]>([]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (activeTab === "heritage") {
+          const data = await api.heritage.getHeritageByRegion("mienTrung");
+          setHeritage(data);
+        } else if (activeTab === "festivals") {
+          const data = await api.festival.getFestivalByRegion("mienTrung");
+          setFestivals(data);
+        } else if (activeTab === "crafts") {
+          const data =
+            await api.traditionalVillage.getTraditionalVillageByRegion(
+              "mienTrung"
+            );
+          setCrafts(data);
+        } else if (activeTab === "music") {
+          const data = await api.musical.getMusicalByRegion("mienTrung");
+          setMusical(data);
+        }else if(activeTab === "cuisine"){
+          const data = await api.cuisine.getFoodsByRegion("mienTrung");
+          setCuisine(data);
+      
+        }
+      } catch (error) {
+        console.error("Lỗi khi tải dữ liệu tab:", error);
+      }
+    };
+
+    fetchData();
+  }, [activeTab]);
+  console.log('heritage',heritage)
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -60,7 +106,8 @@ export default function CentralCulturePage() {
         {/* Cultural Categories */}
         <section className="bg-muted py-12 md:py-16 lg:py-20">
           <div className="container">
-            <Tabs defaultValue="heritage" className="w-full">
+            <Tabs defaultValue="heritage" className="w-full" value={activeTab}
+              onValueChange={setActiveTab}>
               <div className="flex justify-center mb-8">
                 <TabsList>
                   <TabsTrigger value="heritage">Di sản văn hóa</TabsTrigger>
@@ -72,77 +119,87 @@ export default function CentralCulturePage() {
 
               <TabsContent value="heritage">
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {heritage.map((item) => (
-                    <Card key={item.name}>
+                  {heritage.map((item) => {
+                    const imageData = item?.attributes?.image?.data?.attributes;
+                    const imageUrl = getUrl(imageData?.url);
+                    return ( <Card key={item.attributes.name}>
                       <div className="relative h-48">
-                        <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" />
+                        <Image src={imageUrl || "/placeholder.svg"} alt={item.attributes.name} fill className="object-cover" />
                       </div>
                       <CardHeader>
-                        <CardTitle>{item.name}</CardTitle>
-                        <CardDescription>{item.location}</CardDescription>
+                        <CardTitle>{item.attributes.name}</CardTitle>
+                        <CardDescription>{item.attributes.location}</CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
+                        <p className="text-sm text-muted-foreground">{item.attributes.description}</p>
                       </CardContent>
                     </Card>
-                  ))}
+                  )})}
                 </div>
               </TabsContent>
 
               <TabsContent value="music">
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {music.map((item) => (
-                    <Card key={item.name}>
+                  {musical.map((item) => {
+                    const imageData = item?.attributes?.image?.data?.attributes;
+                    const imageUrl = getUrl(imageData?.url);
+                    return(
+                      <Card key={item.id}>
                       <div className="relative h-48">
-                        <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" />
+                        <Image src={imageUrl || "/placeholder.svg"} alt={item.attributes.image.data.attributes.name} fill className="object-cover" />
                       </div>
                       <CardHeader>
-                        <CardTitle>{item.name}</CardTitle>
-                        <CardDescription>{item.origin}</CardDescription>
+                        <CardTitle>{item.attributes.name}</CardTitle>
+                        <CardDescription>{item.attributes.origin}</CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
+                        <p className="text-sm text-muted-foreground">{item.attributes.description}</p>
                       </CardContent>
                     </Card>
-                  ))}
+                    )
+                  })}
                 </div>
               </TabsContent>
 
               <TabsContent value="cuisine">
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {cuisine.map((item) => (
-                    <Card key={item.name}>
+                  {cuisine.map((item) =>{
+                    const imageData = item?.attributes?.image?.data?.attributes;
+                    const imageUrl = getUrl(imageData?.url);
+                    return ( <Card key={item.attributes.name}>
                       <div className="relative h-48">
-                        <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" />
+                        <Image src={imageUrl || "/placeholder.svg"} alt={item.attributes.name} fill className="object-cover" />
                       </div>
                       <CardHeader>
-                        <CardTitle>{item.name}</CardTitle>
-                        <CardDescription>{item.origin}</CardDescription>
+                        <CardTitle>{item.attributes.name}</CardTitle>
+                        <CardDescription>{item.attributes.origin}</CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
+                        <p className="text-sm text-muted-foreground">{item.attributes.description}</p>
                       </CardContent>
                     </Card>
-                  ))}
+                  )})}
                 </div>
               </TabsContent>
 
               <TabsContent value="crafts">
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {crafts.map((item) => (
-                    <Card key={item.name}>
+                  {crafts.map((item) =>{
+                    const imageData = item?.attributes?.image?.data?.attributes;
+                    const imageUrl = getUrl(imageData?.url);
+                    return ( <Card key={item.attributes.name}>
                       <div className="relative h-48">
-                        <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" />
+                        <Image src={imageUrl || "/placeholder.svg"} alt={item.attributes.name} fill className="object-cover" />
                       </div>
                       <CardHeader>
-                        <CardTitle>{item.name}</CardTitle>
-                        <CardDescription>{item.location}</CardDescription>
+                        <CardTitle>{item.attributes.name}</CardTitle>
+                        <CardDescription>{item.attributes.location}</CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
+                        <p className="text-sm text-muted-foreground">{item.attributes.description}</p>
                       </CardContent>
                     </Card>
-                  ))}
+                  )})}
                 </div>
               </TabsContent>
             </Tabs>
@@ -170,8 +227,8 @@ export default function CentralCulturePage() {
                   của triều đình nhà Nguyễn. Năm 2003, UNESCO đã công nhận Nhã nhạc cung đình Huế là Kiệt tác truyền
                   khẩu và di sản văn hóa phi vật thể của nhân loại.
                 </p>
-                <div className="relative h-[200px] rounded-lg overflow-hidden">
-                  <Image src="/images/nha-nhac.png" alt="Nhã nhạc cung đình Huế" fill className="object-cover" />
+                <div className="relative h-[400px] rounded-lg overflow-hidden">
+                  <Image src={NhaNhacCungDinhHue} alt="Nhã nhạc cung đình Huế" fill className="object-cover" />
                 </div>
               </CardContent>
             </Card>
@@ -187,9 +244,9 @@ export default function CentralCulturePage() {
                   nhiều nguyên liệu quý hiếm để phục vụ vua chúa và hoàng gia. Các món ăn không chỉ ngon miệng mà còn
                   đẹp mắt, thể hiện sự sang trọng và đẳng cấp của triều đình.
                 </p>
-                <div className="relative h-[200px] rounded-lg overflow-hidden">
+                <div className="relative h-[400px] rounded-lg overflow-hidden">
                   <Image
-                    src="/images/am-thuc-cung-dinh.png"
+                    src={AmThucCungDinhHue}
                     alt="Ẩm thực cung đình Huế"
                     fill
                     className="object-cover"
@@ -210,10 +267,10 @@ export default function CentralCulturePage() {
               Hãy đến và trải nghiệm nét đẹp văn hóa đặc sắc của vùng đất cố đô và di sản
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/destinations?region=central">
+              <Link href="/destinations?region=mienTrung">
                 <Button size="lg">Khám phá điểm đến</Button>
               </Link>
-              <Link href="/cuisine?region=central">
+              <Link href="/cuisine?region=mienTrung">
                 <Button size="lg" variant="outline">
                   Khám phá ẩm thực
                 </Button>
@@ -227,86 +284,86 @@ export default function CentralCulturePage() {
   )
 }
 
-const heritage = [
-  {
-    name: "Cố đô Huế",
-    location: "Thừa Thiên Huế",
-    description: "Di sản văn hóa thế giới với hệ thống kiến trúc cung đình, lăng tẩm và đền chùa của triều Nguyễn.",
-    image: "/images/hue.png",
-  },
-  {
-    name: "Phố cổ Hội An",
-    location: "Quảng Nam",
-    description: "Thương cảng quốc tế sầm uất một thời, nay là di sản văn hóa thế giới với kiến trúc độc đáo.",
-    image: "/images/hoi-an.png",
-  },
-  {
-    name: "Thánh địa Mỹ Sơn",
-    location: "Quảng Nam",
-    description: "Quần thể đền tháp Chăm Pa cổ, là di sản văn hóa thế giới với kiến trúc tôn giáo độc đáo.",
-    image: "/images/my-son.png",
-  },
-]
+// const heritage = [
+//   {
+//     name: "Cố đô Huế",
+//     location: "Thừa Thiên Huế",
+//     description: "Di sản văn hóa thế giới với hệ thống kiến trúc cung đình, lăng tẩm và đền chùa của triều Nguyễn.",
+//     image: "/images/hue.png",
+//   },
+//   {
+//     name: "Phố cổ Hội An",
+//     location: "Quảng Nam",
+//     description: "Thương cảng quốc tế sầm uất một thời, nay là di sản văn hóa thế giới với kiến trúc độc đáo.",
+//     image: "/images/hoi-an.png",
+//   },
+//   {
+//     name: "Thánh địa Mỹ Sơn",
+//     location: "Quảng Nam",
+//     description: "Quần thể đền tháp Chăm Pa cổ, là di sản văn hóa thế giới với kiến trúc tôn giáo độc đáo.",
+//     image: "/images/my-son.png",
+//   },
+// ]
 
-const music = [
-  {
-    name: "Ca Huế",
-    origin: "Huế",
-    description: "Loại hình ca nhạc truyền thống của xứ Huế, thường được biểu diễn trên thuyền rồng trên sông Hương.",
-    image: "/images/ca-hue.png",
-  },
-  {
-    name: "Hò Quảng",
-    origin: "Quảng Nam, Quảng Ngãi",
-    description: "Làn điệu dân ca đặc trưng của người dân miền Trung, thường được hát trong lúc lao động.",
-    image: "/images/ho-quang.png",
-  },
-  {
-    name: "Bài Chòi",
-    origin: "Bình Định, Phú Yên",
-    description: "Di sản văn hóa phi vật thể của nhân loại, kết hợp giữa trò chơi dân gian và nghệ thuật biểu diễn.",
-    image: "/images/bai-choi.png",
-  },
-]
+// const music = [
+//   {
+//     name: "Ca Huế",
+//     origin: "Huế",
+//     description: "Loại hình ca nhạc truyền thống của xứ Huế, thường được biểu diễn trên thuyền rồng trên sông Hương.",
+//     image: "/images/ca-hue.png",
+//   },
+//   {
+//     name: "Hò Quảng",
+//     origin: "Quảng Nam, Quảng Ngãi",
+//     description: "Làn điệu dân ca đặc trưng của người dân miền Trung, thường được hát trong lúc lao động.",
+//     image: "/images/ho-quang.png",
+//   },
+//   {
+//     name: "Bài Chòi",
+//     origin: "Bình Định, Phú Yên",
+//     description: "Di sản văn hóa phi vật thể của nhân loại, kết hợp giữa trò chơi dân gian và nghệ thuật biểu diễn.",
+//     image: "/images/bai-choi.png",
+//   },
+// ]
 
-const cuisine = [
-  {
-    name: "Bún bò Huế",
-    origin: "Huế",
-    description: "Món bún nổi tiếng với nước dùng đậm đà, cay nồng và các loại thịt bò, giò heo, chả Huế.",
-    image: "/images/bun-bo-hue.png",
-  },
-  {
-    name: "Mì Quảng",
-    origin: "Quảng Nam",
-    description: "Món mì đặc trưng với sợi mì dày, nước dùng ít, nhiều loại rau sống và bánh tráng nướng.",
-    image: "/images/mi-quang.png",
-  },
-  {
-    name: "Bánh xèo miền Trung",
-    origin: "Miền Trung",
-    description: "Bánh xèo miền Trung có kích thước nhỏ hơn, giòn hơn và được ăn kèm với nước mắm chua ngọt.",
-    image: "/images/banh-xeo-mien-trung.png",
-  },
-]
+// const cuisine = [
+//   {
+//     name: "Bún bò Huế",
+//     origin: "Huế",
+//     description: "Món bún nổi tiếng với nước dùng đậm đà, cay nồng và các loại thịt bò, giò heo, chả Huế.",
+//     image: "/images/bun-bo-hue.png",
+//   },
+//   {
+//     name: "Mì Quảng",
+//     origin: "Quảng Nam",
+//     description: "Món mì đặc trưng với sợi mì dày, nước dùng ít, nhiều loại rau sống và bánh tráng nướng.",
+//     image: "/images/mi-quang.png",
+//   },
+//   {
+//     name: "Bánh xèo miền Trung",
+//     origin: "Miền Trung",
+//     description: "Bánh xèo miền Trung có kích thước nhỏ hơn, giòn hơn và được ăn kèm với nước mắm chua ngọt.",
+//     image: "/images/banh-xeo-mien-trung.png",
+//   },
+// ]
 
-const crafts = [
-  {
-    name: "Nghề làm nón lá",
-    location: "Huế",
-    description: "Nghề thủ công truyền thống làm nón lá Huế với kỹ thuật đặc biệt và hoa văn tinh tế.",
-    image: "/images/non-la.png",
-  },
-  {
-    name: "Làng nghề mộc Kim Bồng",
-    location: "Quảng Nam",
-    description: "Làng nghề mộc truyền thống với các sản phẩm đồ gỗ tinh xảo, đặc biệt là đồ gỗ nội thất và thuyền.",
-    image: "/images/moc-kim-bong.png",
-  },
-  {
-    name: "Nghề dệt chiếu Cẩm Nê",
-    location: "Thừa Thiên Huế",
-    description: "Nghề dệt chiếu truyền thống với kỹ thuật dệt hoa văn tinh xảo, tạo nên những tấm chiếu đẹp và bền.",
-    image: "/images/chieu-cam-ne.png",
-  },
-]
+// const crafts = [
+//   {
+//     name: "Nghề làm nón lá",
+//     location: "Huế",
+//     description: "Nghề thủ công truyền thống làm nón lá Huế với kỹ thuật đặc biệt và hoa văn tinh tế.",
+//     image: "/images/non-la.png",
+//   },
+//   {
+//     name: "Làng nghề mộc Kim Bồng",
+//     location: "Quảng Nam",
+//     description: "Làng nghề mộc truyền thống với các sản phẩm đồ gỗ tinh xảo, đặc biệt là đồ gỗ nội thất và thuyền.",
+//     image: "/images/moc-kim-bong.png",
+//   },
+//   {
+//     name: "Nghề dệt chiếu Cẩm Nê",
+//     location: "Thừa Thiên Huế",
+//     description: "Nghề dệt chiếu truyền thống với kỹ thuật dệt hoa văn tinh xảo, tạo nên những tấm chiếu đẹp và bền.",
+//     image: "/images/chieu-cam-ne.png",
+//   },
+// ]

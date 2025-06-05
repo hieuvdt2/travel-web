@@ -9,7 +9,7 @@ import type { Food } from "@/types"
 //       "Phở là một trong những món ăn nổi tiếng nhất của Việt Nam, được yêu thích trên toàn thế giới. Món ăn này bao gồm bánh phở làm từ gạo, nước dùng đậm đà được ninh từ xương bò hoặc gà cùng với các loại gia vị như hồi, quế, đinh hương, và thịt bò tái hoặc chín, thịt gà xé. Phở thường được ăn kèm với các loại rau thơm như húng quế, ngò gai, giá đỗ và ớt, chanh. Mỗi vùng miền của Việt Nam có cách chế biến phở khác nhau, nhưng nổi tiếng nhất là phở Hà Nội với hương vị tinh tế và phở Nam Định với nước dùng đậm đà.",
 //     imageUrl: "/images/pho.jpg",
 //     origin: "Hà Nội, Nam Định",
-//     regions: ["north"],
+//     regions: ["mienBac"],
 //     ingredients: [
 //       "Bánh phở",
 //       "Thịt bò hoặc gà",
@@ -36,7 +36,7 @@ import type { Food } from "@/types"
 //       "Bún chả là một món ăn đặc trưng của Hà Nội, bao gồm bún (mì làm từ gạo), thịt lợn nướng (chả) và nước mắm pha chua ngọt với đu đủ và cà rốt ngâm chua. Thịt lợn được ướp với các loại gia vị như nước mắm, đường, tỏi, hành, sau đó nướng trên than hoa. Bún chả thường được ăn kèm với nhiều loại rau thơm như húng quế, kinh giới, rau diếp, và đôi khi có cả nem rán. Món ăn này đã trở nên nổi tiếng toàn cầu sau khi cựu Tổng thống Mỹ Barack Obama thưởng thức nó trong chuyến thăm Việt Nam năm 2016.",
 //     imageUrl: "/images/bun-cha.jpg",
 //     origin: "Hà Nội",
-//     regions: ["north"],
+//     regions: ["mienBac"],
 //     ingredients: [
 //       "Bún (mì gạo)",
 //       "Thịt lợn (thường là thịt ba chỉ và thịt xay viên)",
@@ -63,7 +63,7 @@ import type { Food } from "@/types"
 //       "Bánh mì Việt Nam là một loại sandwich độc đáo, kết hợp giữa bánh mì kiểu Pháp với các nguyên liệu đặc trưng của Việt Nam. Vỏ bánh mì giòn bên ngoài, mềm bên trong, được nhồi với nhiều loại nhân như thịt xá xíu, chả lụa, pate, thịt nguội, cùng với đồ chua (cà rốt và củ cải ngâm), dưa leo, ngò, ớt và xốt mayonnaise. Bánh mì có mặt ở khắp nơi tại Việt Nam, từ những xe đẩy ven đường đến các cửa hàng sang trọng, và mỗi nơi đều có công thức riêng. Món ăn này đã được Lonely Planet bình chọn là một trong những món ăn đường phố ngon nhất thế giới.",
 //     imageUrl: "/images/banh-mi.jpg",
 //     origin: "Sài Gòn (TP.HCM)",
-//     regions: ["south", "central", "north"],
+//     regions: ["mienNam", "mienTrung", "mienBac"],
 //     ingredients: [
 //       "Bánh mì Pháp",
 //       "Thịt (xá xíu, chả lụa, thịt nguội)",
@@ -90,7 +90,7 @@ import type { Food } from "@/types"
 //       "Cao lầu là một món ăn đặc trưng của Hội An, có nguồn gốc từ sự giao thoa văn hóa giữa Việt Nam, Trung Quốc và Nhật Bản. Điểm đặc biệt của cao lầu nằm ở sợi mì có màu vàng đặc trưng, được làm từ gạo ngâm trong nước tro từ cây cau và nước giếng Bá Lễ - một giếng nước cổ ở Hội An. Món ăn bao gồm sợi mì, thịt xá xíu, rau sống (rau húng, giá đỗ, rau muống chẻ), và bánh đa giòn. Cao lầu không có nhiều nước như các món mì khác, thay vào đó, nó được tưới một ít nước xá xíu. Theo truyền thống, cao lầu chỉ có thể được làm đúng cách tại Hội An.",
 //     imageUrl: "/images/cao-lau.jpg",
 //     origin: "Hội An, Quảng Nam",
-//     regions: ["central"],
+//     regions: ["mienTrung"],
 //     ingredients: [
 //       "Mì cao lầu (làm từ gạo ngâm nước tro)",
 //       "Thịt xá xíu",
@@ -116,7 +116,7 @@ import type { Food } from "@/types"
 //       "Bún bò Huế là một món ăn đặc trưng của cố đô Huế, nổi tiếng với hương vị cay nồng và thơm ngon. Món ăn bao gồm bún (mì gạo), thịt bò, giò heo, chả lụa, và đôi khi có cả tiết. Điểm đặc biệt của bún bò Huế nằm ở nước dùng đậm đà, được nấu từ xương bò và xương heo, kết hợp với sả, gừng, ruốc, ớt, và mắm ruốc Huế. Màu đỏ đặc trưng của nước dùng đến từ ớt và annatto oil (dầu hạt điều). Bún bò Huế thường được ăn kèm với rau sống, giá đỗ, chanh, ớt, và các loại rau thơm.",
 //     imageUrl: "/images/bun-bo-hue.jpg",
 //     origin: "Huế, Thừa Thiên Huế",
-//     regions: ["central"],
+//     regions: ["mienTrung"],
 //     ingredients: [
 //       "Bún (mì gạo)",
 //       "Thịt bò, giò heo",
@@ -143,7 +143,7 @@ import type { Food } from "@/types"
 //       "Cơm tấm, hay còn gọi là cơm tấm Sài Gòn, là một món ăn đặc trưng của miền Nam Việt Nam, đặc biệt là ở Thành phố Hồ Chí Minh. Món ăn bao gồm gạo tấm (gạo vỡ) nấu chín, thường được ăn kèm với sườn nướng, bì (da heo luộc thái sợi trộn với bột gạo rang), chả trứng, và đôi khi có thêm mỡ hành, dưa chua, và trứng ốp la. Điểm đặc biệt của cơm tấm nằm ở nước mắm ngọt đậm đà, được rưới lên trên cơm. Cơm tấm là món ăn phổ biến cho bữa sáng và bữa trưa ở Sài Gòn, và có thể tìm thấy ở khắp nơi từ những quán ven đường đến các nhà hàng sang trọng.",
 //     imageUrl: "/images/com-tam.jpg",
 //     origin: "Sài Gòn (TP.HCM)",
-//     regions: ["south"],
+//     regions: ["mienNam"],
 //     ingredients: [
 //       "Gạo tấm (gạo vỡ)",
 //       "Sườn nướng",
@@ -171,7 +171,7 @@ import type { Food } from "@/types"
 //       "Bánh xèo là một món ăn truyền thống của Việt Nam, có nguồn gốc từ miền Trung nhưng phổ biến trên khắp cả nước. Tên gọi 'xèo' đến từ âm thanh khi đổ bột vào chảo dầu nóng. Bánh xèo là một loại bánh crepe giòn, được làm từ bột gạo, nước cốt dừa, nghệ (tạo màu vàng), nhân bên trong gồm tôm, thịt, giá đỗ, và đôi khi có nấm. Bánh xèo miền Nam thường lớn hơn và giòn hơn so với bánh xèo miền Trung. Món ăn này thường được ăn kèm với nhiều loại rau sống như xà lách, diếp cá, húng quế, và nước mắm pha chua ngọt.",
 //     imageUrl: "/images/banh-xeo.jpg",
 //     origin: "Miền Trung Việt Nam",
-//     regions: ["central", "south"],
+//     regions: ["mienTrung", "mienNam"],
 //     ingredients: [
 //       "Bột gạo, nước cốt dừa, nghệ",
 //       "Tôm, thịt lợn",
@@ -197,7 +197,7 @@ import type { Food } from "@/types"
 //       "Chả cá Lã Vọng là một món ăn truyền thống của Hà Nội, có lịch sử hơn 100 năm. Món ăn này được đặt theo tên của một nhà hàng nổi tiếng ở phố Chả Cá, Hà Nội. Chả cá được làm từ cá lăng hoặc cá quả, ướp với nghệ, gừng, tỏi, và các gia vị khác, sau đó được rán với dầu ăn. Điểm đặc biệt của món ăn này là cá được rán trực tiếp tại bàn ăn, cùng với thì là và hành lá. Chả cá thường được ăn kèm với bún, đậu phộng rang, rau thơm, và đặc biệt là mắm tôm - một loại mắm có mùi mạnh nhưng tạo nên hương vị độc đáo cho món ăn.",
 //     imageUrl: "/images/cha-ca.jpg",
 //     origin: "Hà Nội",
-//     regions: ["north"],
+//     regions: ["mienBac"],
 //     ingredients: [
 //       "Cá lăng hoặc cá quả",
 //       "Nghệ, gừng, tỏi",
@@ -224,7 +224,7 @@ import type { Food } from "@/types"
 //       "Gỏi cuốn, còn được gọi là nem cuốn hoặc spring rolls, là một món ăn nhẹ phổ biến của Việt Nam. Món ăn này bao gồm bánh tráng (làm từ bột gạo) cuốn với tôm, thịt lợn luộc, bún (mì gạo), rau sống như xà lách, húng quế, và đôi khi có thêm giá đỗ, dưa leo. Gỏi cuốn không được chiên như nem rán, mà được ăn tươi, tạo cảm giác nhẹ nhàng và mát mẻ, đặc biệt phù hợp trong những ngày nóng. Món ăn này thường được chấm với nước chấm đậu phộng đặc biệt, được làm từ tương hột (hoisin sauce), đậu phộng rang nghiền và tỏi.",
 //     imageUrl: "/images/goi-cuon.jpg",
 //     origin: "Miền Nam Việt Nam",
-//     regions: ["south", "central"],
+//     regions: ["mienNam", "mienTrung"],
 //     ingredients: [
 //       "Bánh tráng (làm từ bột gạo)",
 //       "Tôm, thịt lợn luộc",
@@ -250,7 +250,7 @@ import type { Food } from "@/types"
 //       "Hủ tiếu Nam Vang là một món ăn phổ biến ở miền Nam Việt Nam, có nguồn gốc từ ẩm thực Campuchia (Nam Vang là tên gọi tiếng Việt của Phnom Penh). Món ăn bao gồm mì gạo (có thể là mì khô hoặc mềm tùy theo sở thích), nước dùng trong và ngọt được nấu từ xương heo và tôm khô, cùng với nhiều loại thịt như thịt heo xá xíu, lòng heo, tôm, mực, và đôi khi có cả gan heo, cật heo. Hủ tiếu Nam Vang thường được ăn kèm với giá đỗ, hẹ, và các loại rau thơm. Món ăn này có thể được phục vụ với nước dùng (hủ tiếu nước) hoặc không có nước dùng (hủ tiếu khô, nước dùng để riêng).",
 //     imageUrl: "/images/hu-tieu.jpg",
 //     origin: "Miền Nam Việt Nam",
-//     regions: ["south"],
+//     regions: ["mienNam"],
 //     ingredients: [
 //       "Mì gạo (hủ tiếu)",
 //       "Thịt heo xá xíu, lòng heo",
@@ -276,7 +276,7 @@ import type { Food } from "@/types"
 //       "Mì Quảng là một món ăn đặc trưng của miền Trung Việt Nam, đặc biệt là tỉnh Quảng Nam. Món ăn bao gồm sợi mì màu vàng (do được làm từ gạo ngâm với nghệ), ít nước dùng đậm đà, và nhiều loại thịt như thịt gà, thịt heo, tôm, và đôi khi có cả trứng luộc. Điểm đặc biệt của Mì Quảng là nước dùng ít hơn so với các món mì khác, chỉ đủ để thấm vào sợi mì. Món ăn thường được trang trí với đậu phộng rang nghiền, bánh tráng mè nướng giòn, và các loại rau thơm như húng quế, rau răm, giá đỗ, chuối xanh thái lát, và ớt.",
 //     imageUrl: "/images/mi-quang.jpg",
 //     origin: "Quảng Nam",
-//     regions: ["central"],
+//     regions: ["mienTrung"],
 //     ingredients: [
 //       "Mì gạo màu vàng (do nghệ)",
 //       "Thịt gà, thịt heo, tôm",
@@ -302,7 +302,7 @@ import type { Food } from "@/types"
 //       "Bánh cuốn là một món ăn truyền thống của miền Bắc Việt Nam, đặc biệt phổ biến ở Hà Nội. Món ăn bao gồm những lớp bánh mỏng làm từ bột gạo hấp, cuộn với nhân thịt lợn xay và nấm mèo. Bánh cuốn thường được ăn kèm với chả lụa (giò lụa), hành phi, và rau thơm, cùng với nước mắm pha chua ngọt. Điểm đặc biệt của bánh cuốn nằm ở lớp bánh mỏng, mềm, và trong suốt, đòi hỏi kỹ thuật làm bánh tinh xảo. Bánh cuốn là món ăn phổ biến cho bữa sáng ở miền Bắc, nhưng cũng có thể được thưởng thức vào bất kỳ thời điểm nào trong ngày.",
 //     imageUrl: "/images/banh-cuon.jpg",
 //     origin: "Miền Bắc Việt Nam",
-//     regions: ["north"],
+//     regions: ["mienBac"],
 //     ingredients: ["Bột gạo", "Thịt lợn xay", "Nấm mèo", "Hành phi", "Chả lụa (giò lụa)", "Nước mắm pha chua ngọt"],
 //     howToEat:
 //       "Bánh cuốn thường được ăn bằng cách chấm vào nước mắm pha chua ngọt. Bạn có thể ăn kèm với chả lụa và rau thơm.",
@@ -322,7 +322,7 @@ import type { Food } from "@/types"
 //       "Nem rán (miền Bắc) hay chả giò (miền Nam) là một trong những món ăn truyền thống nổi tiếng nhất của Việt Nam. Món ăn bao gồm bánh tráng (làm từ bột gạo) cuốn với nhân thịt lợn xay, nấm mèo, miến, hành, cà rốt, và các gia vị, sau đó được chiên giòn. Nem rán thường được ăn kèm với nhiều loại rau sống như xà lách, húng quế, diếp cá, và nước mắm pha chua ngọt. Món ăn này thường xuất hiện trong các dịp lễ, Tết, hoặc các bữa tiệc gia đình, nhưng cũng là món ăn phổ biến hàng ngày. Nem rán đã trở thành một trong những món ăn Việt Nam được yêu thích trên toàn thế giới.",
 //     imageUrl: "/images/nem-ran.jpg",
 //     origin: "Việt Nam",
-//     regions: ["north", "south"],
+//     regions: ["mienBac", "mienNam"],
 //     ingredients: [
 //       "Bánh tráng (làm từ bột gạo)",
 //       "Thịt lợn xay",
@@ -351,7 +351,7 @@ export const foods: Food[] = [
       "Phở là một trong những món ăn nổi tiếng nhất của Việt Nam, được yêu thích trên toàn thế giới. Món ăn này bao gồm bánh phở làm từ gạo, nước dùng đậm đà được ninh từ xương bò hoặc gà cùng với các loại gia vị như hồi, quế, đinh hương, và thịt bò tái hoặc chín, thịt gà xé. Phở thường được ăn kèm với các loại rau thơm như húng quế, ngò gai, giá đỗ và ớt, chanh. Mỗi vùng miền của Việt Nam có cách chế biến phở khác nhau, nhưng nổi tiếng nhất là phở Hà Nội với hương vị tinh tế và phở Nam Định với nước dùng đậm đà.",
     imageUrl: "/images/pho.jpg",
     origin: "Hà Nội, Nam Định",
-    regions: ["north"],
+    regions: ["mienBac"],
     ingredients: [
       "Bánh phở",
       "Thịt bò hoặc gà",
@@ -378,7 +378,7 @@ export const foods: Food[] = [
       "Bún chả là một món ăn đặc trưng của Hà Nội, bao gồm bún (mì làm từ gạo), thịt lợn nướng (chả) và nước mắm pha chua ngọt với đu đủ và cà rốt ngâm chua. Thịt lợn được ướp với các loại gia vị như nước mắm, đường, tỏi, hành, sau đó nướng trên than hoa. Bún chả thường được ăn kèm với nhiều loại rau thơm như húng quế, kinh giới, rau diếp, và đôi khi có cả nem rán. Món ăn này đã trở nên nổi tiếng toàn cầu sau khi cựu Tổng thống Mỹ Barack Obama thưởng thức nó trong chuyến thăm Việt Nam năm 2016.",
     imageUrl: "/images/bun-cha.jpg",
     origin: "Hà Nội",
-    regions: ["north"],
+    regions: ["mienBac"],
     ingredients: [
       "Bún (mì gạo)",
       "Thịt lợn (thường là thịt ba chỉ và thịt xay viên)",
@@ -405,7 +405,7 @@ export const foods: Food[] = [
       "Bánh mì Việt Nam là một loại sandwich độc đáo, kết hợp giữa bánh mì kiểu Pháp với các nguyên liệu đặc trưng của Việt Nam. Vỏ bánh mì giòn bên ngoài, mềm bên trong, được nhồi với nhiều loại nhân như thịt xá xíu, chả lụa, pate, thịt nguội, cùng với đồ chua (cà rốt và củ cải ngâm), dưa leo, ngò, ớt và xốt mayonnaise. Bánh mì có mặt ở khắp nơi tại Việt Nam, từ những xe đẩy ven đường đến các cửa hàng sang trọng, và mỗi nơi đều có công thức riêng. Món ăn này đã được Lonely Planet bình chọn là một trong những món ăn đường phố ngon nhất thế giới.",
     imageUrl: "/images/banh-mi.jpg",
     origin: "Sài Gòn (TP.HCM)",
-    regions: ["south", "central", "north"],
+    regions: ["mienNam", "mienTrung", "mienBac"],
     ingredients: [
       "Bánh mì Pháp",
       "Thịt (xá xíu, chả lụa, thịt nguội)",
@@ -432,7 +432,7 @@ export const foods: Food[] = [
       "Cao lầu là một món ăn đặc trưng của Hội An, có nguồn gốc từ sự giao thoa văn hóa giữa Việt Nam, Trung Quốc và Nhật Bản. Điểm đặc biệt của cao lầu nằm ở sợi mì có màu vàng đặc trưng, được làm từ gạo ngâm trong nước tro từ cây cau và nước giếng Bá Lễ - một giếng nước cổ ở Hội An. Món ăn bao gồm sợi mì, thịt xá xíu, rau sống (rau húng, giá đỗ, rau muống chẻ), và bánh đa giòn. Cao lầu không có nhiều nước như các món mì khác, thay vào đó, nó được tưới một ít nước xá xíu. Theo truyền thống, cao lầu chỉ có thể được làm đúng cách tại Hội An.",
     imageUrl: "/images/cao-lau.jpg",
     origin: "Hội An, Quảng Nam",
-    regions: ["central"],
+    regions: ["mienTrung"],
     ingredients: [
       "Mì cao lầu (làm từ gạo ngâm nước tro)",
       "Thịt xá xíu",
@@ -458,7 +458,7 @@ export const foods: Food[] = [
       "Bún bò Huế là một món ăn đặc trưng của cố đô Huế, nổi tiếng với hương vị cay nồng và thơm ngon. Món ăn bao gồm bún (mì gạo), thịt bò, giò heo, chả lụa, và đôi khi có cả tiết. Điểm đặc biệt của bún bò Huế nằm ở nước dùng đậm đà, được nấu từ xương bò và xương heo, kết hợp với sả, gừng, ruốc, ớt, và mắm ruốc Huế. Màu đỏ đặc trưng của nước dùng đến từ ớt và annatto oil (dầu hạt điều). Bún bò Huế thường được ăn kèm với rau sống, giá đỗ, chanh, ớt, và các loại rau thơm.",
     imageUrl: "/images/bun-bo-hue.jpg",
     origin: "Huế, Thừa Thiên Huế",
-    regions: ["central"],
+    regions: ["mienTrung"],
     ingredients: [
       "Bún (mì gạo)",
       "Thịt bò, giò heo",
@@ -485,7 +485,7 @@ export const foods: Food[] = [
       "Cơm tấm, hay còn gọi là cơm tấm Sài Gòn, là một món ăn đặc trưng của miền Nam Việt Nam, đặc biệt là ở Thành phố Hồ Chí Minh. Món ăn bao gồm gạo tấm (gạo vỡ) nấu chín, thường được ăn kèm với sườn nướng, bì (da heo luộc thái sợi trộn với bột gạo rang), chả trứng, và đôi khi có thêm mỡ hành, dưa chua, và trứng ốp la. Điểm đặc biệt của cơm tấm nằm ở nước mắm ngọt đậm đà, được rưới lên trên cơm. Cơm tấm là món ăn phổ biến cho bữa sáng và bữa trưa ở Sài Gòn, và có thể tìm thấy ở khắp nơi từ những quán ven đường đến các nhà hàng sang trọng.",
     imageUrl: "/images/com-tam.jpg",
     origin: "Sài Gòn (TP.HCM)",
-    regions: ["south"],
+    regions: ["mienNam"],
     ingredients: [
       "Gạo tấm (gạo vỡ)",
       "Sườn nướng",
@@ -513,7 +513,7 @@ export const foods: Food[] = [
       "Bánh xèo là một món ăn truyền thống của Việt Nam, có nguồn gốc từ miền Trung nhưng phổ biến trên khắp cả nước. Tên gọi 'xèo' đến từ âm thanh khi đổ bột vào chảo dầu nóng. Bánh xèo là một loại bánh crepe giòn, được làm từ bột gạo, nước cốt dừa, nghệ (tạo màu vàng), nhân bên trong gồm tôm, thịt, giá đỗ, và đôi khi có nấm. Bánh xèo miền Nam thường lớn hơn và giòn hơn so với bánh xèo miền Trung. Món ăn này thường được ăn kèm với nhiều loại rau sống như xà lách, diếp cá, húng quế, và nước mắm pha chua ngọt.",
     imageUrl: "/images/banh-xeo.jpg",
     origin: "Miền Trung Việt Nam",
-    regions: ["central", "south"],
+    regions: ["mienTrung", "mienNam"],
     ingredients: [
       "Bột gạo, nước cốt dừa, nghệ",
       "Tôm, thịt lợn",
@@ -539,7 +539,7 @@ export const foods: Food[] = [
       "Chả cá Lã Vọng là một món ăn truyền thống của Hà Nội, có lịch sử hơn 100 năm. Món ăn này được đặt theo tên của một nhà hàng nổi tiếng ở phố Chả Cá, Hà Nội. Chả cá được làm từ cá lăng hoặc cá quả, ướp với nghệ, gừng, tỏi, và các gia vị khác, sau đó được rán với dầu ăn. Điểm đặc biệt của món ăn này là cá được rán trực tiếp tại bàn ăn, cùng với thì là và hành lá. Chả cá thường được ăn kèm với bún, đậu phộng rang, rau thơm, và đặc biệt là mắm tôm - một loại mắm có mùi mạnh nhưng tạo nên hương vị độc đáo cho món ăn.",
     imageUrl: "/images/cha-ca.jpg",
     origin: "Hà Nội",
-    regions: ["north"],
+    regions: ["mienBac"],
     ingredients: [
       "Cá lăng hoặc cá quả",
       "Nghệ, gừng, tỏi",
@@ -566,7 +566,7 @@ export const foods: Food[] = [
       "Gỏi cuốn, còn được gọi là nem cuốn hoặc spring rolls, là một món ăn nhẹ phổ biến của Việt Nam. Món ăn này bao gồm bánh tráng (làm từ bột gạo) cuốn với tôm, thịt lợn luộc, bún (mì gạo), rau sống như xà lách, húng quế, và đôi khi có thêm giá đỗ, dưa leo. Gỏi cuốn không được chiên như nem rán, mà được ăn tươi, tạo cảm giác nhẹ nhàng và mát mẻ, đặc biệt phù hợp trong những ngày nóng. Món ăn này thường được chấm với nước chấm đậu phộng đặc biệt, được làm từ tương hột (hoisin sauce), đậu phộng rang nghiền và tỏi.",
     imageUrl: "/images/goi-cuon.jpg",
     origin: "Miền Nam Việt Nam",
-    regions: ["south", "central"],
+    regions: ["mienNam", "mienTrung"],
     ingredients: [
       "Bánh tráng (làm từ bột gạo)",
       "Tôm, thịt lợn luộc",
@@ -592,7 +592,7 @@ export const foods: Food[] = [
       "Hủ tiếu Nam Vang là một món ăn phổ biến ở miền Nam Việt Nam, có nguồn gốc từ ẩm thực Campuchia (Nam Vang là tên gọi tiếng Việt của Phnom Penh). Món ăn bao gồm mì gạo (có thể là mì khô hoặc mềm tùy theo sở thích), nước dùng trong và ngọt được nấu từ xương heo và tôm khô, cùng với nhiều loại thịt như thịt heo xá xíu, lòng heo, tôm, mực, và đôi khi có cả gan heo, cật heo. Hủ tiếu Nam Vang thường được ăn kèm với giá đỗ, hẹ, và các loại rau thơm. Món ăn này có thể được phục vụ với nước dùng (hủ tiếu nước) hoặc không có nước dùng (hủ tiếu khô, nước dùng để riêng).",
     imageUrl: "/images/hu-tieu.jpg",
     origin: "Miền Nam Việt Nam",
-    regions: ["south"],
+    regions: ["mienNam"],
     ingredients: [
       "Mì gạo (hủ tiếu)",
       "Thịt heo xá xíu, lòng heo",
@@ -618,7 +618,7 @@ export const foods: Food[] = [
       "Mì Quảng là một món ăn đặc trưng của miền Trung Việt Nam, đặc biệt là tỉnh Quảng Nam. Món ăn bao gồm sợi mì màu vàng (do được làm từ gạo ngâm với nghệ), ít nước dùng đậm đà, và nhiều loại thịt như thịt gà, thịt heo, tôm, và đôi khi có cả trứng luộc. Điểm đặc biệt của Mì Quảng là nước dùng ít hơn so với các món mì khác, chỉ đủ để thấm vào sợi mì. Món ăn thường được trang trí với đậu phộng rang nghiền, bánh tráng mè nướng giòn, và các loại rau thơm như húng quế, rau răm, giá đỗ, chuối xanh thái lát, và ớt.",
     imageUrl: "/images/mi-quang.jpg",
     origin: "Quảng Nam",
-    regions: ["central"],
+    regions: ["mienTrung"],
     ingredients: [
       "Mì gạo màu vàng (do nghệ)",
       "Thịt gà, thịt heo, tôm",
@@ -644,7 +644,7 @@ export const foods: Food[] = [
       "Bánh cuốn là một món ăn truyền thống của miền Bắc Việt Nam, đặc biệt phổ biến ở Hà Nội. Món ăn bao gồm những lớp bánh mỏng làm từ bột gạo hấp, cuộn với nhân thịt lợn xay và nấm mèo. Bánh cuốn thường được ăn kèm với chả lụa (giò lụa), hành phi, và rau thơm, cùng với nước mắm pha chua ngọt. Điểm đặc biệt của bánh cuốn nằm ở lớp bánh mỏng, mềm, và trong suốt, đòi hỏi kỹ thuật làm bánh tinh xảo. Bánh cuốn là món ăn phổ biến cho bữa sáng ở miền Bắc, nhưng cũng có thể được thưởng thức vào bất kỳ thời điểm nào trong ngày.",
     imageUrl: "/images/banh-cuon.jpg",
     origin: "Miền Bắc Việt Nam",
-    regions: ["north"],
+    regions: ["mienBac"],
     ingredients: ["Bột gạo", "Thịt lợn xay", "Nấm mèo", "Hành phi", "Chả lụa (giò lụa)", "Nước mắm pha chua ngọt"],
     howToEat:
       "Bánh cuốn thường được ăn bằng cách chấm vào nước mắm pha chua ngọt. Bạn có thể ăn kèm với chả lụa và rau thơm.",
@@ -664,7 +664,7 @@ export const foods: Food[] = [
       "Nem rán (miền Bắc) hay chả giò (miền Nam) là một trong những món ăn truyền thống nổi tiếng nhất của Việt Nam. Món ăn bao gồm bánh tráng (làm từ bột gạo) cuốn với nhân thịt lợn xay, nấm mèo, miến, hành, cà rốt, và các gia vị, sau đó được chiên giòn. Nem rán thường được ăn kèm với nhiều loại rau sống như xà lách, húng quế, diếp cá, và nước mắm pha chua ngọt. Món ăn này thường xuất hiện trong các dịp lễ, Tết, hoặc các bữa tiệc gia đình, nhưng cũng là món ăn phổ biến hàng ngày. Nem rán đã trở thành một trong những món ăn Việt Nam được yêu thích trên toàn thế giới.",
     imageUrl: "/images/nem-ran.jpg",
     origin: "Việt Nam",
-    regions: ["north", "south"],
+    regions: ["mienBac", "mienNam"],
     ingredients: [
       "Bánh tráng (làm từ bột gạo)",
       "Thịt lợn xay",
