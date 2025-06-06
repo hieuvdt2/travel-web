@@ -299,7 +299,6 @@ export default function SouthCulturePage() {
     </div>
   )
 }
-
 const music = [
   {
     name: "Đờn ca tài tử",
@@ -389,3 +388,4 @@ const lifestyle = [
     image: "/images/lang-be.png",
   },
 ]
+

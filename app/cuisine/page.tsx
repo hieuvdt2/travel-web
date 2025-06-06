@@ -1,72 +1,38 @@
-"use client";
-
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { FoodCard } from "@/components/food-card";
-// import { foods } from "@/data/foods";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Loader2 } from "lucide-react";
 import api from "@/lib/api";
-import { Food, Foods } from "@/types";
+import { Foods } from "@/types";
 import AddressTravel from '@/app/asset/images/am-thuc.jpeg'
+import { CuisineTabs } from "./components/cuisine-tabs";
 
 const VALID_REGIONS = ["all", "mienBac", "mienTrung", "mienNam"];
 
-export default function CuisinePage() {
-  const searchParams = useSearchParams();
-  const regionFromUrl = searchParams.get("region");
+export default async function CuisinePage({
+  searchParams,
+}: {
+  searchParams: { region?: string };
+}) {
+  const regionFromUrl = searchParams.region;
+  const selectedRegion = VALID_REGIONS.includes(regionFromUrl || "")
+    ? regionFromUrl || "all"
+    : "all";
 
-  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [foods, setFoods] = useState<Foods[]>([]);
-  const [error, setError] = useState<string | null>(null);
-
-  // Delay render cho đến khi có region hợp lệ
-  useEffect(() => {
-    const region = VALID_REGIONS.includes(regionFromUrl || "")
-      ? regionFromUrl
-      : "all";
-    setSelectedRegion(region);
-  }, [regionFromUrl]);
-//  console.log('foddsss',foods)
-  const northernFoods = foods.filter((food) => food.attributes.regions.includes("mienBac"));
-  const centralFoods = foods.filter((food) =>food.attributes.regions.includes("mienTrung"));
-  const southernFoods = foods.filter((food) =>food.attributes.regions.includes("mienNam"));
-  console.log('')
-  useEffect(() => {
-    const fetchDestinations = async () => {
-      try {
-        setLoading(true);
-        const response =  await api.cuisine.getAllFoods();
-        console.log('response',response)
-        setFoods(response.data);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching destinations:", err);
-        setError("Không thể tải dữ liệu điểm đến. Vui lòng thử lại sau.");
-        setLoading(false);
-      }
-    };
-
-    fetchDestinations();
-  }, []);
+  const response = await api.cuisine.getAllFoods();
+  const foods = response.data;
 
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
       <main className="flex-1">
-       <section className="relative">
-   <div className="absolute inset-0 bg-black/25 z-10" />
+        <section className="relative">
+          <div className="absolute inset-0 bg-black/25 z-10" />
           <div
             className="h-[40vh] bg-contain bg-center"
-           style={{ backgroundImage: `url(${AddressTravel.src})` }} 
+            style={{ backgroundImage: `url(${AddressTravel.src})` }}
           />
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 md:px-6">
             <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl">
-           Ẩm thực Việt Nam
+              Ẩm thực Việt Nam
             </h1>
             <p className="max-w-[700px] text-white/90 md:text-xl mt-4">
               Khám phá các món ăn truyền thống và hiện đại tại Việt Nam
@@ -83,58 +49,7 @@ export default function CuisinePage() {
             </p>
           </div>
 
-          {selectedRegion ? (
-            <Tabs
-              value={selectedRegion}
-              onValueChange={setSelectedRegion}
-              className="mt-8"
-            >
-              <div className="flex justify-center">
-                <TabsList className="mb-8">
-                  <TabsTrigger value="all">Tất cả</TabsTrigger>
-                  <TabsTrigger value="mienBac">Miền Bắc</TabsTrigger>
-                  <TabsTrigger value="mienTrung">Miền Trung</TabsTrigger>
-                  <TabsTrigger value="mienNam">Miền Nam</TabsTrigger>
-                </TabsList>
-              </div>
-
-              <TabsContent value="all">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                  {foods.map((food) => (
-                    <FoodCard key={food.id} food={food} />
-                  ))}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="mienBac">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                  {northernFoods.map((food) => (
-                    <FoodCard key={food.id} food={food} />
-                  ))}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="mienTrung">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                  {centralFoods.map((food) => (
-                    <FoodCard key={food.id} food={food} />
-                  ))}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="mienNam">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                  {southernFoods.map((food) => (
-                    <FoodCard key={food.id} food={food} />
-                  ))}
-                </div>
-              </TabsContent>
-            </Tabs>
-          ) : (
-            <div className="mt-12 flex justify-center">
-              <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
-            </div>
-          )}
+          <CuisineTabs foods={foods} selectedRegion={selectedRegion} />
         </section>
         <section className="bg-accent py-12 md:py-16 lg:py-20">
           <div className="container">

@@ -283,7 +283,6 @@ export default function CentralCulturePage() {
     </div>
   )
 }
-
 // const heritage = [
 //   {
 //     name: "Cố đô Huế",
@@ -367,3 +366,4 @@ export default function CentralCulturePage() {
 //     image: "/images/chieu-cam-ne.png",
 //   },
 // ]
+
