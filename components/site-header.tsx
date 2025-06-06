@@ -2,13 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "@/app/asset/images/logo-Vivu.png";
-import coverImage from "@/app/asset/images/dia-danh-noi-tieng.jpg";
-import foodCover from "@/app/asset/images/am-thuc-viet-nam-all.jpg";
-import cultureCover from "@/app/asset/images/van-hoa-3-mien.png";
-
-
-import { MobileNav } from "./mobile-nav";
 import { DesktopNav } from "./desktop-nav";
+import { MobileNav } from "./mobile-nav";
 
 const SiteHeader = () => {
   return (
@@ -24,10 +19,9 @@ const SiteHeader = () => {
             className="rounded-full object-cover hidden sm:inline-block"
           />
         </Link>
-
+        {/* Navigation components are removed as per new design */}
         {/* Desktop Navigation */}
         <DesktopNav />
-
         {/* Mobile Navigation */}
         <MobileNav />
       </div>
