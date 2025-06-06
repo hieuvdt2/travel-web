@@ -12,10 +12,8 @@ export default async function CuisinePage({
 }: {
   searchParams: { region?: string };
 }) {
-  const regionFromUrl = searchParams.region;
-  const selectedRegion = VALID_REGIONS.includes(regionFromUrl || "")
-    ? regionFromUrl || "all"
-    : "all";
+  const regionFromUrl = searchParams?.region || 'all';
+  const selectedRegion = VALID_REGIONS.includes(regionFromUrl) ? regionFromUrl : "all";
 
   const response = await api.cuisine.getAllFoods();
   const foods = response.data;

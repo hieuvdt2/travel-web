@@ -1,4 +1,3 @@
-'use client'
 import Image from "next/image"
 import Link from "next/link"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -6,53 +5,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
-import { useEffect, useState } from "react"
-import { Foods, Heritages, TraditionalVillages, Festivals, Musicals } from "@/types"
-import api from "@/lib/api"
-import { getUrl } from "@/app/common/utils"
 import VHMienNam from "@/app/asset/images/van-hoa-mine-nam.jpg"
 import VHMienNamBanner from "@/app/asset/images/van-hoa-mien-nam-banner.jpg"
-import CaiLuong from "@/app/asset/images/cai-luong.jpg"
-import DonCaTaiTu from "@/app/asset/images/don-ca-tai-tu.jpg"
+import VH from "@/app/asset/images/van-hoa-dac-trung-cua-mien-nam.jpg"
+import TQ from "@/app/asset/images/baodantoc_vh_nguoi_hoa.jpg"
 import HoMienNam from "@/app/asset/images/ho-mien-nam.jpg"
+import { MusicTab } from "./components/MusicTab"
+import { FestivalsTab } from "./components/FestivalsTab"
+import { CuisineTab } from "./components/CuisineTab"
+import { LifestyleTab } from "./components/LifestyleTab"
 
-
-export default function SouthCulturePage() {
-  const [activeTab, setActiveTab] = useState("festivals");
-  const [festivals, setFestivals] = useState<Festivals[]>([]);
-  const [cuisine, setCuisine] = useState<Foods[]>([]);
-  const [crafts, setCrafts] = useState<TraditionalVillages[]>([]);
-  const [heritage, setHeritage] = useState<Heritages[]>([]);
-  const [musical, setMusical] = useState<Musicals[]>([]);
-  console.log('cuisine',cuisine)
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (activeTab === "cuisine") {
-          console.log('activeTab',1)
-          const data = await api.cuisine.getFoodsByRegion("mienNam");
-          setCuisine(data);
-        } else if (activeTab === "festivals") {
-          const data = await api.festival.getFestivalByRegion("mienNam");
-          setFestivals(data);
-        } else if (activeTab === "crafts") {
-          const data =
-            await api.traditionalVillage.getTraditionalVillageByRegion(
-              "mienBac"
-            );
-          setCrafts(data);
-        } else if (activeTab === "music") {
-          const data = await api.musical.getMusicalByRegion("mienNam");
-          setMusical(data);
-        }
-      } catch (error) {
-        console.error("Lỗi khi tải dữ liệu tab:", error);
-      }
-    };
-
-    fetchData();
-  }, [activeTab]);
-  console.log('musical',musical)
+export default async function SouthCulturePage() {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -62,8 +25,7 @@ export default function SouthCulturePage() {
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div
             className="h-[40vh] bg-auto bg-center"
-                     style={{ backgroundImage: `url(${VHMienNamBanner.src})` }} 
-
+            style={{ backgroundImage: `url(${VHMienNamBanner.src})` }}
           />
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4 md:px-6">
             <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl">Văn Hóa Miền Nam</h1>
@@ -101,8 +63,7 @@ export default function SouthCulturePage() {
         {/* Cultural Categories */}
         <section className="bg-muted py-12 md:py-16 lg:py-20">
           <div className="container">
-            <Tabs defaultValue="music" className="w-full" value={activeTab}
-              onValueChange={setActiveTab}>
+            <Tabs defaultValue="music" className="w-full">
               <div className="flex justify-center mb-8">
                 <TabsList>
                   <TabsTrigger value="music">Âm nhạc dân gian</TabsTrigger>
@@ -113,108 +74,19 @@ export default function SouthCulturePage() {
               </div>
 
               <TabsContent value="music">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {musical.map((item) => {
-                    const imageData = item?.attributes?.image?.data?.attributes;
-                    const imageUrl = getUrl(imageData?.url);
-                    return (
-                      <Card key={item.id}>
-                        <div className="relative h-48">
-                          <Image src={imageUrl || "/placeholder.svg"} alt={item.attributes.image.data.attributes.name} fill className="object-cover" />
-                        </div>
-                        <CardHeader>
-                          <CardTitle>{item.attributes.name}</CardTitle>
-                          <CardDescription>{item.attributes.origin}</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground">{item.attributes.description}</p>
-                        </CardContent>
-                      </Card>
-                    )
-                  })}
-                </div>
+                <MusicTab />
               </TabsContent>
 
               <TabsContent value="festivals">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {festivals.map((item) => {
-                    const imageData = item?.attributes?.image?.data?.attributes;
-                    const imageUrl = getUrl(imageData?.url);
-                    return (
-                      <Card key={item.attributes.name}>
-                        <div className="relative h-48">
-                          <Image
-                            src={imageUrl || "/placeholder.svg"}
-                            alt={item.attributes.name}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <CardHeader>
-                          <CardTitle>{item.attributes.name}</CardTitle>
-                          <CardDescription>
-                            {item.attributes.origin}
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground">
-                            {item.attributes.description}
-                          </p>
-                        </CardContent>
-                      </Card>
-                    );
-                  })}
-                </div>
+                <FestivalsTab />
               </TabsContent>
 
-        <TabsContent value="cuisine">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {cuisine.map((item) => {
-                    const imageData = item?.attributes?.image?.data?.attributes;
-                    const imageUrl = getUrl(imageData?.url);
-                    return (
-                      <Card key={item.attributes.name}>
-                        <div className="relative h-48">
-                          <Image
-                            src={imageUrl || "/placeholder.svg"}
-                            alt={item.attributes.name}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <CardHeader>
-                          <CardTitle>{item.attributes.name}</CardTitle>
-                          <CardDescription>
-                            {item.attributes.origin}
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <p className="text-sm text-muted-foreground">
-                            {item.attributes.description}
-                          </p>
-                        </CardContent>
-                      </Card>
-                    );
-                  })}
-                </div>
+              <TabsContent value="cuisine">
+                <CuisineTab />
               </TabsContent>
+
               <TabsContent value="lifestyle">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {lifestyle.map((item) => (
-                    <Card key={item.name}>
-                      <div className="relative h-48">
-                        <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" />
-                      </div>
-                      <CardHeader>
-                        <CardTitle>{item.name}</CardTitle>
-                        <CardDescription>{item.location}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
+                <LifestyleTab />
               </TabsContent>
             </Tabs>
           </div>
@@ -241,11 +113,11 @@ export default function SouthCulturePage() {
                 <p className="text-muted-foreground mb-4">
                   Người Việt miền Nam có lối sống gắn liền với sông nước, với những nét văn hóa đặc trưng như đờn ca tài
                   tử, hò vè, các lễ hội nông nghiệp và tín ngưỡng thờ Mẫu. Họ có tính cách cởi mở, phóng khoáng và rất
-                  mến khách.
+                  mến khách, với các hoạt động và lối sống sôi động và nhộn nhịp về đêm
                 </p>
-                <div className="relative h-[200px] rounded-lg overflow-hidden">
+                <div className="relative h-[350px] rounded-lg overflow-hidden">
                   <Image
-                    src="/images/nguoi-viet-mien-nam.png"
+                    src={VH}
                     alt="Văn hóa người Việt miền Nam"
                     fill
                     className="object-cover"
@@ -265,8 +137,8 @@ export default function SouthCulturePage() {
                   ở khu vực Chợ Lớn (TP.HCM). Văn hóa người Hoa thể hiện qua kiến trúc đền chùa, ẩm thực, lễ hội và các
                   phong tục tập quán đặc trưng.
                 </p>
-                <div className="relative h-[200px] rounded-lg overflow-hidden">
-                  <Image src="/images/cho-lon.png" alt="Văn hóa người Hoa ở Chợ Lớn" fill className="object-cover" />
+                <div className="relative h-[350px] rounded-lg overflow-hidden">
+                  <Image src={TQ} alt="Văn hóa người Hoa ở Chợ Lớn" fill className="object-cover" />
                 </div>
               </CardContent>
             </Card>
@@ -299,93 +171,4 @@ export default function SouthCulturePage() {
     </div>
   )
 }
-const music = [
-  {
-    name: "Đờn ca tài tử",
-    origin: "Nam Bộ",
-    description: "Di sản văn hóa phi vật thể của nhân loại, là loại hình âm nhạc dân gian đặc trưng của miền Nam.",
-    image: DonCaTaiTu,
-  },
-  {
-    name: "Cải lương",
-    origin: "Nam Bộ",
-    description: "Loại hình sân khấu truyền thống của miền Nam, kết hợp giữa ca, nhạc, kịch với âm nhạc tài tử.",
-    image: CaiLuong,
-  },
-  {
-    name: "Hò miền Nam",
-    origin: "Đồng bằng sông Cửu Long",
-    description:
-      "Các làn điệu hò đặc trưng của miền Nam như hò lơ, hò đồng tháp, hò cấy, thường được hát trong lúc lao động.",
-    image: HoMienNam,
-  },
-]
-
-// const festivals = [
-//   {
-//     name: "Lễ hội Nghinh Ông",
-//     time: "Tháng 8 Âm lịch",
-//     description:
-//       "Lễ hội truyền thống của ngư dân miền Nam để tỏ lòng biết ơn và cầu mong Cá Ông (cá Voi) phù hộ cho ngư dân.",
-//     image: "/images/nghinh-ong.png",
-//   },
-//   {
-//     name: "Lễ hội Bà Chúa Xứ",
-//     time: "Tháng 4-5 Âm lịch",
-//     description: "Lễ hội lớn nhất vùng Thất Sơn (An Giang), thờ Bà Chúa Xứ - vị thần được người dân Nam Bộ tôn kính.",
-//     image: "/images/ba-chua-xu.png",
-//   },
-//   {
-//     name: "Lễ hội Ok Om Bok",
-//     time: "Tháng 10 Âm lịch",
-//     description: "Lễ hội truyền thống của người Khmer Nam Bộ để tạ ơn thần Mặt Trăng đã ban cho mùa màng bội thu.",
-//     image: "/images/ok-om-bok.png",
-//   },
-// ]
-
-// const cuisine = [
-//   {
-//     name: "Hủ tiếu Nam Vang",
-//     origin: "Sài Gòn",
-//     description:
-//       "Món ăn kết hợp giữa văn hóa Việt và Hoa, với sợi hủ tiếu dai, nước dùng trong ngọt và nhiều loại thịt.",
-//     image: "/images/hu-tieu.png",
-//   },
-//   {
-//     name: "Bánh tráng trộn",
-//     origin: "Sài Gòn",
-//     description: "Món ăn vặt đặc trưng của Sài Gòn với bánh tráng cắt sợi trộn với đủ loại gia vị và trứng cút.",
-//     image: "/images/banh-trang-tron.png",
-//   },
-//   {
-//     name: "Cơm tấm",
-//     origin: "Sài Gòn",
-//     description: "Món cơm đặc trưng của Sài Gòn với gạo tấm, sườn nướng, bì, chả, trứng và nước mắm pha đặc biệt.",
-//     image: "/images/com-tam.png",
-//   },
-// ]
-
-const lifestyle = [
-  {
-    name: "Chợ nổi Cái Răng",
-    location: "Cần Thơ",
-    description:
-      "Chợ nổi truyền thống trên sông, nơi diễn ra các hoạt động mua bán, trao đổi hàng hóa của người dân miền Tây.",
-    image: "/images/cho-noi.png",
-  },
-  {
-    name: "Văn hóa miệt vườn",
-    location: "Đồng bằng sông Cửu Long",
-    description:
-      "Nét văn hóa đặc trưng của người dân miền Tây với lối sống gắn liền với vườn cây ăn trái và kênh rạch.",
-    image: "/images/miet-vuon.png",
-  },
-  {
-    name: "Làng bè Châu Đốc",
-    location: "An Giang",
-    description:
-      "Nét văn hóa độc đáo của người dân sống trên những căn nhà nổi trên sông, gắn liền với nghề nuôi cá bè.",
-    image: "/images/lang-be.png",
-  },
-]
 

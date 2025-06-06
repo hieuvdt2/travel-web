@@ -19,8 +19,8 @@ export default async function DestinationsPage({
   const response = await api.destinations.getAllDestinations();
   const destinations = response.data;
 
-  const categoryParam = searchParams.category;
-  const regionParam = searchParams.region;
+  const categoryParam = searchParams?.category;
+  const regionParam = searchParams?.region;
   const activeTab = categoryParam || "all";
 
   // Lọc destinations dựa trên category và region
