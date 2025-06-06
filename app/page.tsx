@@ -30,7 +30,7 @@ export default function HomePage() {
                 Khám phá những địa điểm du lịch tuyệt vời nhất tại Việt Nam
               </p>
             </div>
-            <Tabs defaultValue="all" className="mt-8">
+            <Tabs defaultValue="all" className="mt-8 hidden md:block">
               <div className="flex justify-center">
                 <TabsList className="mb-8">
                   <TabsTrigger value="all">Tất cả</TabsTrigger>

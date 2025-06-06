@@ -1,6 +1,6 @@
-import dynamic from "next/dynamic"
+"use client";
 
-export const NavigationMenu = dynamic(() => import('@/components/ui/navigation-menu').then(mod => mod.NavigationMenu), {
-  ssr: false,
-})
+import { NavigationMenu as UINavigationMenu } from "@/components/ui/navigation-menu";
+
+export const NavigationMenu = UINavigationMenu;
 

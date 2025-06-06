@@ -1,60 +1,21 @@
-'use client'
+
+import AmThucCungDinhHue from "@/app/asset/images/am-thuc-cung-dinh-hue-0.jpg"
+import VHMienTrungBanner from "@/app/asset/images/hanh-trinh-di-san-mien-trung.jpg"
+import NhaNhacCungDinhHue from "@/app/asset/images/nha-nhac-cung-dinh-hue.jpg"
+import VHMienTrung from "@/app/asset/images/van-hoa-mien-trung.jpg"
+import { SiteFooter } from "@/components/site-footer"
+import { SiteHeader } from "@/components/site-header"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Image from "next/image"
 import Link from "next/link"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
-import VHMienTrung from "@/app/asset/images/van-hoa-mien-trung.jpg"
-import VHMienTrungBanner from "@/app/asset/images/hanh-trinh-di-san-mien-trung.jpg"
-import { useEffect, useState } from "react"
-import { Festivals, Foods, Heritages, Musicals, TraditionalVillages } from "@/types"
-import api from "@/lib/api"
-import { getUrl } from "@/app/common/utils"
-import NhaNhacCungDinhHue from "@/app/asset/images/nha-nhac-cung-dinh-hue.jpg"
-import AmThucCungDinhHue from "@/app/asset/images/am-thuc-cung-dinh-hue-0.jpg" 
+import { CraftsTab } from "./components/CraftsTab"
+import { CuisineTab } from "./components/CuisineTab"
+import { HeritageTab } from "./components/HeritageTab"
+import { MusicTab } from "./components/MusicTab"
 
 export default function CentralCulturePage() {
-  const [activeTab, setActiveTab] = useState("heritage");
-  const [festivals, setFestivals] = useState<Festivals[]>([]);
-  const [cuisine, setCuisine] = useState<Foods[]>([]);
-  const [crafts, setCrafts] = useState<TraditionalVillages[]>([]);
-  const [heritage, setHeritage] = useState<Heritages[]>([]);
-  const [musical, setMusical] = useState<Musicals[]>([]);
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (activeTab === "heritage") {
-          const data = await api.heritage.getHeritageByRegion("mienTrung");
-          setHeritage(data);
-        } else if (activeTab === "festivals") {
-          const data = await api.festival.getFestivalByRegion("mienTrung");
-          setFestivals(data);
-        } else if (activeTab === "crafts") {
-          const data =
-            await api.traditionalVillage.getTraditionalVillageByRegion(
-              "mienTrung"
-            );
-          setCrafts(data);
-        } else if (activeTab === "music") {
-          const data = await api.musical.getMusicalByRegion("mienTrung");
-          setMusical(data);
-        }else if(activeTab === "cuisine"){
-          const data = await api.cuisine.getFoodsByRegion("mienTrung");
-          setCuisine(data);
-      
-        }
-      } catch (error) {
-        console.error("Lỗi khi tải dữ liệu tab:", error);
-      }
-    };
-
-    fetchData();
-  }, [activeTab]);
-  console.log('heritage',heritage)
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -106,8 +67,7 @@ export default function CentralCulturePage() {
         {/* Cultural Categories */}
         <section className="bg-muted py-12 md:py-16 lg:py-20">
           <div className="container">
-            <Tabs defaultValue="heritage" className="w-full" value={activeTab}
-              onValueChange={setActiveTab}>
+            <Tabs defaultValue="heritage" className="w-full">
               <div className="flex justify-center mb-8">
                 <TabsList>
                   <TabsTrigger value="heritage">Di sản văn hóa</TabsTrigger>
@@ -118,89 +78,19 @@ export default function CentralCulturePage() {
               </div>
 
               <TabsContent value="heritage">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {heritage.map((item) => {
-                    const imageData = item?.attributes?.image?.data?.attributes;
-                    const imageUrl = getUrl(imageData?.url);
-                    return ( <Card key={item.attributes.name}>
-                      <div className="relative h-48">
-                        <Image src={imageUrl || "/placeholder.svg"} alt={item.attributes.name} fill className="object-cover" />
-                      </div>
-                      <CardHeader>
-                        <CardTitle>{item.attributes.name}</CardTitle>
-                        <CardDescription>{item.attributes.location}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground">{item.attributes.description}</p>
-                      </CardContent>
-                    </Card>
-                  )})}
-                </div>
+                <HeritageTab />
               </TabsContent>
 
               <TabsContent value="music">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {musical.map((item) => {
-                    const imageData = item?.attributes?.image?.data?.attributes;
-                    const imageUrl = getUrl(imageData?.url);
-                    return(
-                      <Card key={item.id}>
-                      <div className="relative h-48">
-                        <Image src={imageUrl || "/placeholder.svg"} alt={item.attributes.image.data.attributes.name} fill className="object-cover" />
-                      </div>
-                      <CardHeader>
-                        <CardTitle>{item.attributes.name}</CardTitle>
-                        <CardDescription>{item.attributes.origin}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground">{item.attributes.description}</p>
-                      </CardContent>
-                    </Card>
-                    )
-                  })}
-                </div>
+                <MusicTab />
               </TabsContent>
 
               <TabsContent value="cuisine">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {cuisine.map((item) =>{
-                    const imageData = item?.attributes?.image?.data?.attributes;
-                    const imageUrl = getUrl(imageData?.url);
-                    return ( <Card key={item.attributes.name}>
-                      <div className="relative h-48">
-                        <Image src={imageUrl || "/placeholder.svg"} alt={item.attributes.name} fill className="object-cover" />
-                      </div>
-                      <CardHeader>
-                        <CardTitle>{item.attributes.name}</CardTitle>
-                        <CardDescription>{item.attributes.origin}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground">{item.attributes.description}</p>
-                      </CardContent>
-                    </Card>
-                  )})}
-                </div>
+                <CuisineTab />
               </TabsContent>
 
               <TabsContent value="crafts">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {crafts.map((item) =>{
-                    const imageData = item?.attributes?.image?.data?.attributes;
-                    const imageUrl = getUrl(imageData?.url);
-                    return ( <Card key={item.attributes.name}>
-                      <div className="relative h-48">
-                        <Image src={imageUrl || "/placeholder.svg"} alt={item.attributes.name} fill className="object-cover" />
-                      </div>
-                      <CardHeader>
-                        <CardTitle>{item.attributes.name}</CardTitle>
-                        <CardDescription>{item.attributes.location}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-muted-foreground">{item.attributes.description}</p>
-                      </CardContent>
-                    </Card>
-                  )})}
-                </div>
+                <CraftsTab />
               </TabsContent>
             </Tabs>
           </div>
@@ -227,7 +117,7 @@ export default function CentralCulturePage() {
                   của triều đình nhà Nguyễn. Năm 2003, UNESCO đã công nhận Nhã nhạc cung đình Huế là Kiệt tác truyền
                   khẩu và di sản văn hóa phi vật thể của nhân loại.
                 </p>
-                <div className="relative h-[400px] rounded-lg overflow-hidden">
+                <div className="relative h-[350px] rounded-lg overflow-hidden">
                   <Image src={NhaNhacCungDinhHue} alt="Nhã nhạc cung đình Huế" fill className="object-cover" />
                 </div>
               </CardContent>
@@ -244,7 +134,7 @@ export default function CentralCulturePage() {
                   nhiều nguyên liệu quý hiếm để phục vụ vua chúa và hoàng gia. Các món ăn không chỉ ngon miệng mà còn
                   đẹp mắt, thể hiện sự sang trọng và đẳng cấp của triều đình.
                 </p>
-                <div className="relative h-[400px] rounded-lg overflow-hidden">
+                <div className="relative h-[350px] rounded-lg overflow-hidden">
                   <Image
                     src={AmThucCungDinhHue}
                     alt="Ẩm thực cung đình Huế"
@@ -283,7 +173,6 @@ export default function CentralCulturePage() {
     </div>
   )
 }
-
 // const heritage = [
 //   {
 //     name: "Cố đô Huế",
@@ -367,3 +256,4 @@ export default function CentralCulturePage() {
 //     image: "/images/chieu-cam-ne.png",
 //   },
 // ]
+

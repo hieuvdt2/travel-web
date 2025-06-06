@@ -58,9 +58,35 @@ export interface Large {
 
 
 
+export type Region = "mienBac" | "mienTrung" | "mienNam" | "all";
+
+export type Category = "all" | "du-lich-tam-linh" | "du-lich-bien" | "du-lich-tu-nhien" | "du-lich-nhan-tao";
+
 export interface Destination {
-  id: number
-  attributes: Attributes
+  id: number;
+  attributes: {
+    name: string;
+    description: string;
+    image: string;
+    region: Region;
+    category: string;
+  };
+}
+
+export interface Testimonial {
+  id: number;
+  name: string;
+  avatar: string;
+  rating: number;
+  comment: string;
+  destination: string;
+}
+
+export interface FeaturedDestination {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
 }
 
 export interface Attributes {

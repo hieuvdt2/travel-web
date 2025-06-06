@@ -15,9 +15,13 @@ import VHMienBac from "../asset/images/van-hoa-mien-bac.png";
 import VHMienTrung from "../asset/images/van-hoa-mien-trung.jpg";
 import VHMienNam from "../asset/images/van-hoa-mine-nam.jpg";
 import VH3Mien from "../asset/images/sac-mau-tet-ba-mien.jpg";
-import  Img3Mien from "../asset/images/3-mien.jpg";
+import Img3Mien from "../asset/images/3-mien.jpg";
+import api from "@/lib/api";
+import { getUrl } from "../common/utils";
 
-export default function CulturePage() {
+export default async function CulturePage() {
+  const response = await api.heritage.getAllHeritage();
+  const heritages = response.data;
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
@@ -92,9 +96,7 @@ export default function CulturePage() {
                 <Card key={region.id} className="overflow-hidden">
                   <div className="relative h-60">
                     <Image
-                      src={
-                        region.image || `/placeholder.svg?height=240&width=400`
-                      }
+                      src={region.image}
                       alt={region.name}
                       fill
                       className="object-cover"
@@ -135,27 +137,31 @@ export default function CulturePage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {heritages.map((heritage) => (
-              <Card key={heritage.name} className="overflow-hidden">
+            {heritages.map((heritage) => {
+                   const imageData = heritage?.attributes?.image?.data?.attributes;
+                   const imageUrl = getUrl(imageData?.url);
+              return(
+                <Card key={heritage.id} className="overflow-hidden">
                 <div className="relative h-48">
                   <Image
-                    src={heritage.image || "/placeholder.svg"}
-                    alt={heritage.name}
+                    src={imageUrl}
+                    alt={heritage.attributes.image.data.attributes.name}
                     fill
                     className="object-cover"
                   />
                 </div>
                 <CardHeader>
-                  <CardTitle>{heritage.name}</CardTitle>
-                  <CardDescription>{heritage.type}</CardDescription>
+                  <CardTitle>{heritage.attributes.name}</CardTitle>
+                  <CardDescription>{heritage.attributes.origin}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">
-                    {heritage.description}
+                    {heritage.attributes.description}
                   </p>
                 </CardContent>
               </Card>
-            ))}
+              )
+            })}
           </div>
         </section>
 
