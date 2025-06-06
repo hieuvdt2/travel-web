@@ -1,9 +1,12 @@
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import type { Destination } from "@/types";
+import type { Destination, Region } from "@/types";
 import api from "@/lib/api";
 import AddressTravel from '@/app/asset/images/diem-du-lich.jpg'
 import { DestinationsTabs } from "./components/destinations-tabs";
+import { VietnamTourismIntro } from "./components/vietnam-tourism-intro";
+import { FeaturedDestinationsSlider } from "./components/featured-destinations-slider";
+import { Testimonials } from "./components/testimonials";
 
 // Số lượng item hiển thị ban đầu
 const INITIAL_ITEMS_COUNT = 8;
@@ -19,18 +22,13 @@ export default async function DestinationsPage({
   const response = await api.destinations.getAllDestinations();
   const destinations = response.data;
 
-  const categoryParam = searchParams?.category;
-  const regionParam = searchParams?.region;
+  // Đảm bảo searchParams đã được xử lý
+  const params = await Promise.resolve(searchParams);
+  const categoryParam = params?.category;
   const activeTab = categoryParam || "all";
 
-  // Lọc destinations dựa trên category và region
+  // Lọc destinations chỉ dựa trên category
   let filteredDestinations = [...destinations];
-
-  if (regionParam) {
-    filteredDestinations = filteredDestinations.filter(
-      (d) => d.attributes.region === regionParam
-    );
-  }
 
   if (activeTab !== "all") {
     filteredDestinations = filteredDestinations.filter(
@@ -63,7 +61,7 @@ export default async function DestinationsPage({
           </div>
         </section>
 
-        {/* Destinations */}
+        {/* Destinations Tabs */}
         <section className="container py-12 md:py-16 lg:py-20">
           <DestinationsTabs
             destinations={filteredDestinations}
@@ -72,6 +70,15 @@ export default async function DestinationsPage({
             hasMore={hasMore}
           />
         </section>
+
+        {/* Vietnam Tourism Intro */}
+        <VietnamTourismIntro category={activeTab} />
+
+        {/* Featured Destinations Slider */}
+        <FeaturedDestinationsSlider category={activeTab} />
+
+        {/* Testimonials (đánh giá) */}
+        <Testimonials category={activeTab}  />
       </main>
       <SiteFooter />
     </div>
